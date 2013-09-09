@@ -1,0 +1,21 @@
+<div id="apply-form" class="modal" style="display: none;">
+  <%= simple_form_for :prep_application, :url => prep_prep_applications_path(params[:id]), :html => {:method => :post, :class => 'form-horizontal' } do |p| %>
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>Apply for Prep</h3>
+    </div>
+    <div class="modal-body">
+      <%= hidden_field_tag :prep_id, params[:id] %>
+      <div class="control-group">
+        <%= p.label :cover_letter, 'Cover Letter', :class => 'control-label' %>
+        <div class="controls">
+          <%= p.text_area :cover_letter, :style => "width: 300px; height: 200px;" %>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <%= p.submit "Apply", :class => "btn btn-success" %>
+      <a class="btn" data-dismiss="modal" href="#">Close</a>
+    </div>
+  <% end %>
+</div>

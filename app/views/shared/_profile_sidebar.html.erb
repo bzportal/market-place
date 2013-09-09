@@ -1,0 +1,18 @@
+<div class="span3">
+	<!-- Left Panel -->
+	<h5><strong>User Settings</strong></h5>
+  <ul class="nav nav-pills nav-stacked">
+		<li class="<%= profile_sidebar_class('registrations') %>">
+			<%= link_to 'User Account', edit_user_registration_path %>
+		</li>
+  	<% if current_user.has_role? :prepper %>
+			<li class="<%= profile_sidebar_class('profiles') %>">
+				<%= link_to "User Profile", edit_profile_path(1) %>
+			</li>
+		<% else %>
+			<li class="<%= active_menu_class('profiles', 'payment') %>">
+				<a href="/profiles/payment">Payment Account</a>
+			</li>
+		<% end %>
+	</ul>
+</div><!--/span3-->

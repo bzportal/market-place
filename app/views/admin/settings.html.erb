@@ -1,0 +1,56 @@
+<div class="container">
+	<br>
+	<div class="span9" style="float: none !important; margin-left: auto; margin-right: auto;">
+		<div class="row-fluid" id="prepper-profile">
+  		<div class="span12">
+				<!-- JobType Blocks  -->
+				<div class="row-fluid" id="job-types-section">
+					<div class="headline">
+						<h4>Job Types</h4>
+						<span class="pull-right">
+							<a data-toggle="collapse" data-target="#add-job-type">
+								<i class="icon-plus"></i>Add
+							</a>
+						</span>
+					</div>
+					<%= render :partial => "add_job_type" %>
+					<div class="row-fluid">
+						<ul id="job_type_list" class="blog-tags inline">
+						<% @job_types.each do |p| %>
+							<li id="job_type<%= p.id %>">
+								<%= link_to("#{p.name}<i class='icon-remove'></i>".html_safe, job_type_path(p), remote:true, :method => :delete) %>
+							</li>
+						<% end %>
+						</ul>
+					</div>
+				</div><!--/row-fluid-->
+
+				<br>
+
+				<!-- Skill Tags -->
+				<div class="row-fluid" id="job-types-section">
+					<div class="headline">
+						<h4>Skills</h4>
+						<span class="pull-right">
+							<a data-toggle="collapse" data-target="#add-skill-tag">
+								<i class="icon-plus"></i>Add
+							</a>
+						</span>
+					</div>
+					<%= render :partial => "add_skill_tag" %>
+					<div class="row-fluid">
+						<ul id="skill_tag_list" class="blog-tags inline">
+						<% @skill_tags.each do |p| %>
+							<li id="job_type<%= p.id %>">
+								<%= link_to("#{p.name}<i class='icon-remove'></i>".html_safe, skill_tag_path(p), remote:true, :method => :delete) %>
+							</li>
+						<% end %>
+						</ul>
+					</div>
+				</div><!--/row-fluid-->
+			</div><!--/span9-->
+  	</div><!--/row-fluid-->    
+	</div>
+
+</div><!--/container-->		
+<!--=== End Content Part ===

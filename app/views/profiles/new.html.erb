@@ -1,0 +1,45 @@
+<div class="breadcrumbs margin-bottom-50">
+	<div class="container">
+      <h1 class="color-green pull-left">New Profile</h1>
+      <ul class="pull-right breadcrumb">
+          <li><a href="#">Home</a> <span class="divider">/</span></li>
+          <li class="active">New Profile</li>
+      </ul>
+  </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== Content Part ===-->
+<div class="container">
+	<div class="span6">
+		<div id="new-profile" class="row-fluid">
+			<%= simple_form_for :profile, :url => profiles_path, :html => {:method => :post, :class => 'form-horizontal' } do |p| %>
+				<div class="headline">
+					<h4>Profile Overview</h4>
+				</div>
+		    <%= p.input :title %>
+	      <%= p.input :year_of_experience, collection: 1..20, prompt: "Please Select..." %>
+
+	      <div class="control-group">
+	        <%= p.label :overview, 'Overview', :class => 'control-label' %>
+	        <div class="controls">
+	          <%= p.text_area :overview, :style => 'width: 400px; height: 200px;' %>
+	        </div>
+		    </div>
+
+		    <div class="headline">
+					<h4>Location</h4>
+				</div>
+		    <%= p.input :address, required: true %>
+		    <%#= p.input :country, required: true %>
+		    <%= p.input :state, required: true %>
+		    <%#= p.input :city %>
+		    <%= p.input :phone %>
+	      <div class="controls form-inline">
+	      	<%= p.submit "Save", :class => "btn-u" %>
+	      </div>
+
+		  <% end %>
+  	</div><!--/row-fluid-->
+	</div>
+
+</div><!--/container-->		
+<!--=== End Content Part ===-->

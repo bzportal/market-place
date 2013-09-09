@@ -1,0 +1,16 @@
+<div class="span3">
+	<!-- Left Panel -->
+	<h5><strong>Settings</strong></h5>
+  <ul class="nav nav-pills nav-stacked">
+		<li class="<%= profile_sidebar_class('registrations') %>">
+			<%= link_to 'Job Types', '#job-types-section' %>
+		</li>
+  	<% if current_user.has_role? :prepper %>
+			<li class="<%= profile_sidebar_class('profiles') %>">
+				<%= link_to "Skills", '#skills-section' %>
+			</li>
+		<% else %>
+			<li><a href="#">Payment Account</a></li>
+		<% end %>
+	</ul>
+</div><!--/span3-->

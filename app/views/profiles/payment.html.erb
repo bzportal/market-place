@@ -1,0 +1,55 @@
+<!--=== Content Part ===-->
+<div class="body">
+	<div class="breadcrumbs margin-bottom-50">
+    	<div class="container">
+          <h1 class="color-green pull-left">Payment Account</h1>
+          <ul class="pull-right breadcrumb">
+              <li><a href="#">Home</a> <span class="divider">/</span></li>
+              <li class="active">Payment Account</li>
+          </ul>
+      </div><!--/container-->
+    </div><!--/breadcrumbs-->
+
+	<div class="container">
+		<div class="span11 center">
+			<div class="row-fluid margin-bottom-10">
+				<!--Left Side bar-->
+				<%= render partial: "shared/profile_sidebar" %>
+
+				<div class="span8">
+					<div id="new-job-payment">
+						<%= simple_form_for @profile, :url => profile_path(@profile), :html => {:method => :put, :class => 'form-horizontal' } do |f| %>
+							<div class="field">
+							<%= f.label :card_number, 'Card Number' %>
+							<%= f.text_field :card_number, :class => "text" %>
+							<img src="/assets/payment_method.jpg">
+							<%= f.hidden_field :payment_method %>
+							</div>
+							
+							<div class="field">
+							<%= label_tag :expiration, 'Expiration' %>
+							<%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
+				      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+							</div>
+
+							<div class="field">
+							<%= f.label :zipcode, "Zip/Postal Code" %>
+							<%= f.text_field :zipcode, :class => "text" %>
+							</div>
+
+							<div class="field">
+							<%= f.label :ccvn, "CCVN#" %>
+							<%= f.text_field :ccvn, :class => "text" %>
+						  </div>
+						  <br>
+						  <div class="field">
+					      <%= f.submit "Save", :class => "btn btn-success" %>
+					      <%= link_to 'Cancel', :back, :class => 'btn' %>
+					    </div>
+						<% end %>
+					</div>
+				</div><!-- span8 end -->
+			</div>
+		</div>
+	</div>
+</div>

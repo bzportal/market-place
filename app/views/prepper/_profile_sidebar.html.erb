@@ -1,0 +1,45 @@
+<style type="text/css"> /*Calendar Caption*/
+.fc-header-title h2 {
+    margin-top: 0;
+    white-space: nowrap;
+    font-size: 20px;
+}
+</style>
+<!-- My Profile -->
+<div class="margin-bottom-20">
+	<br>
+	<div class="row-fluid">
+  	<div class="span7">
+  		<%= image_tag current_user.profile.photo.url(:medium) %>
+  	</div>
+  </div>
+  <h4><a href="#"><%= current_user.fullname %></a></h4>
+  <hr>
+  <div class="headline"><h4>Prep Sessions</h4></div>
+  <h5><%= link_to "#Modify Add Interview Prep" %></h5>
+  <h5><%= link_to "#Modify Add Resume Prep" %></h5>
+  <hr>
+	<div class="span11">
+		<div class="space"></div>
+		<div id="prepper_calendar" class="calendar"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+  $("#prepper_calendar").fullCalendar({
+    events: [
+    {
+      title: '1',
+      start: new Date(2013, 8, 20),
+      className: 'btn-u-red'
+    }],
+    header: {
+      left: 'prev',
+      center: 'title',
+      right: 'next'
+    }
+  });
+});
+
+</script>

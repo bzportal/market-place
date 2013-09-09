@@ -1,0 +1,48 @@
+<!--=== Content Part ===-->
+<div class="container">
+	<br>
+	<div class="span11" style="float: none !important; margin-left: auto; margin-right: auto;">
+		<div class="row-fluid" id="admin-pricing-management">
+			<!--Left Sidebar-->
+			<div class="span3">
+				<%= render partial: "profile_sidebar" %>
+			</div>
+
+  		<div class="span9">
+				<div class="row-fluid">
+					<h4 class="text-right"><%= link_to 'Add Product', "#add-product", data: {toggle: "modal"} %></h4>
+					<hr>
+					<%= render :partial => "add_product" %>
+					<%= render "layouts/messages" %>
+					<div class="row-fluid">
+						<table id="product_type_table" class="table">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Type</th>
+									<th>Price</th>
+									<th>Description</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% @products.each do |p| %>
+								<tr>
+									<td><%= p.name %></td>
+									<td><%= Product::PRODUCT_TYPE[p.product_type] %></td>
+									<td>$<%= p.price %>/min</td>
+									<td>
+									<td>
+						        <a data-toggle="collapse" class="btn">Edit</a>
+										<%= link_to("Delete", product_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn') %></td>
+									</td>
+								</tr>
+							<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

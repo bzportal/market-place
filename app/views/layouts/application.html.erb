@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Sleekgeek Prep LLC" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Sleekgeek Prep LLC" %>">
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <%= render 'shared/top' %>
+    <%= render 'shared/header' %>
+    <div style="min-height:400px;">
+    <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
+    <%= render 'shared/copyright' %>
+    <!--! end of #main -->
+  </body>
+  <%= javascript_include_tag "application" %>
+</html>

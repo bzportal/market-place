@@ -1,0 +1,46 @@
+
+<!--=== Header ===-->
+<div class="header">         
+  <div class="container"> 
+    <!-- Logo -->     
+    <div class="logo">                       
+      <a href="#"><img id="logo-header" src="/assets/logo.png" alt="Sleekgeek"></a>
+    </div><!-- /logo -->    
+
+    <!-- Menu -->
+    <div class="navbar">
+      <div class="navbar-inner">                  
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a><!-- /nav-collapse -->
+        <div class="nav-collapse collapse">
+          <ul class="nav top-2">
+          <% if user_signed_in? %>
+            <% if current_user.has_role? :admin %>
+              <%= render "shared/admin_menu" %>
+            <% elsif current_user.has_role? :preppee %>
+              <%= render "shared/preppee_menu" %>
+            <% elsif current_user.has_role? :prepper %>
+              <%= render "shared/prepper_menu" %>
+            <% end %>
+          <% else %>
+            <%= render "shared/landing_menu" %>
+          <% end %>
+
+          </ul>
+          <div class="search-open">
+            <div class="input-append">
+              <form>
+                <input type="text" class="span3" placeholder="Search" />
+                <button type="submit" class="btn-u">Go</button>
+              </form>
+            </div>
+          </div>
+        </div><!-- /nav-collapse -->                
+      </div><!-- /navbar-inner -->
+    </div><!-- /navbar -->              
+  </div><!-- /container -->         
+</div><!--/header -->    
+<!--=== End Header ===-->

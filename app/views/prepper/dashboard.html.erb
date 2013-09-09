@@ -1,0 +1,65 @@
+<div class="container">		
+	<div class="row-fluid">
+		<div class="span3">
+	    <%= render "profile_sidebar" %><!-- :locals => { member: Member.new(), group_id: @group.id } -->
+		</div><!--/span3-->
+		<!-- Search Results -->
+		<div class="span8">
+			<br>
+			<%= render "layouts/messages" %>
+			<% @preps.each do |p| %>
+		    <div class="row-fluid">
+		      <div class="booking-blocks">
+		        <div class="span3 pull-left booking-img">
+	            <img src="/assets/blank_user.jpg" alt="">
+	            <h5>
+	            	<strong>
+	            		<%= p.user.fullname %>
+	            	</strong>
+	            </h5>
+	            <ul class="unstyled inline">
+	               <li><span class="rating-static rating-45"></span></li>
+	               <li><i class="icon-star"></i></li>
+	               <li><i class="icon-star"></i></li>
+	               <li><i class="icon-star"></i></li>
+	               <li><i class="icon-star"></i></li>
+	               <li><i class="icon-star-empty"></i></li>
+	            </ul>
+		        </div>
+		        <div class="span8" style="overflow:hidden;">
+	            <h2><%= link_to p.title, prep_path(p), :class => 'color-blue' %></a></h2>
+	            <p>Posted <%= p.elapsed %> ago </p>
+	            <% scheduled = p.prep_applications.find_by_status(:scheduled) %>
+	            
+	            <% unless scheduled.nil? %>
+	            	<p>
+	            		<strong>Due Start Date:</strong> <%= scheduled.contract.due_start_time %>
+	            	</p>
+	            <% end %>
+
+
+	            <p>
+								<% if !p.description.nil? && p.description.length > 200 %>
+		            	<%= p.description.slice(0, 200) + "... " %>
+		            	<a href="#">more</a>
+		            <% else %>
+		            	<%= p.description %>
+		            <% end %>
+		          </p>
+		          <div class="pull-left blog-page blog-item">
+			         	<ul class="unstyled inline blog-tags">
+			         		<%
+			         			required_skills = p.required_skills.split(',')
+			         		%>
+			         		<% required_skills.each do |s| %>
+		            		<li><a href="#"><%= s %></a></li>
+		            	<% end %>
+		            </ul>
+		          </div>
+			      </div>
+	        </div>
+		    </div>
+	    <% end %>
+		</div><!--/span9-->
+	</div><!--/row-fluid-->
+</div><!--/container-->

@@ -1,0 +1,225 @@
+<div class="container">
+	<br>
+	<div class="span11" style="float: none !important; margin-left: auto; margin-right: auto;">
+		<div class="row-fluid" id="prepper-profile">
+			<!--Left Sidebar-->
+			<%= render partial: "shared/profile_sidebar" %>
+
+  		<div class="span9">
+				<h2>My Contractor Profile</h2>
+				<br>
+				<div class="alert alert-info">
+					<span style="font-size:16px;">My Account Summary</span>
+					<span style="font-size:15px;" class="pull-right">
+						<a data-toggle="collapse" data-target="#profile-overview"><i class="icon-edit"></i></a>
+					</span>
+	        <%= render :partial => "edit_overview" %>
+				</div>
+				<!-- Accont Summary -->
+				<div class="row-fluid margin-bottom-40">
+	        <dl class="dl-horizontal">
+            <dt>Title</dt>
+            <dd><%= @profile.title %></dd>
+            <dt>Portrait</dt>
+            <dd>
+            	<div class="row-fluid">
+              	<div class="span3"><%= image_tag @profile.photo.url(:medium) %></div>
+              	<div class="span5">
+              		<p>Draw in a new photo, or as:</p>
+              		<a style="color: #0093f0;">Edit Photo</a> |
+              		<!-- <a style="color: #0093f0;">Delete Photo</a> -->
+              	</div>
+              	<%= form_for @profile, url: profile_path(@profile), method: "put" do |f| %>
+              		<%= f.file_field :photo, :class => "hidden" %>
+              	<% end %>
+              </div>
+            </dd>
+            <dt>Personal Email</dt>
+            <dd><%= current_user.email %></dd>
+            <dt>Years of experience</dt>
+            <dd><%= @profile.year_of_experience %></dd>
+            <!-- <dt>English</dt>
+            <dd><%#= @profile.english_skill %></dd> -->
+            <dt>Overview</dt>
+            <dd>
+            	<p>
+            		<%= @profile.overview.gsub("\n", "<br>").html_safe unless @profile.overview.nil? %>
+            	</p>
+            </dd>
+          </dl>
+				</div><!--/row-->
+				<!-- //Overview -->
+
+				<!-- Skills Blocks  -->
+				<div class="row-fluid">
+					<div class="alert alert-info">
+						<span style="font-size:16px;">Skills</span>
+						<span style="font-size:15px;" class="pull-right">
+							<a data-toggle="collapse" data-target="#add-skill"><i class="icon-edit"></i></a>
+						</span>
+					</div>
+					<%= render :partial => "add_skills" %>
+					<div class="row-fluid">
+						<ul id="skill_list" class="blog-tags inline">
+						<% skills = @profile.skills %>
+						<% skills.each do |s| %>
+							<li id="job_type<%= s.id %>">
+								<%= link_to("#{s.name}<i class='icon-remove'></i>".html_safe, skill_path(s), remote:true, :method => :delete) %>
+							</li>
+						<% end %>
+						</ul>
+					</div>
+				</div><!--/row-fluid-->
+				<br>
+				<!-- Experience Block  -->
+				<div class="row-fluid">
+						<div class="alert alert-info">
+							<span style="font-size:16px;">Professional Experience</span>
+							<span style="font-size:15px;" class="pull-right">
+								<a data-toggle="collapse" data-target="#add-professional-exp">
+									<i class="icon-edit"></i>
+								</a>
+							</span>
+						</div>
+            <%= render :partial => "add_professional_exp" %>
+						<div class="span12">
+							<table class="table table-bordered" id="pro_experience_list">
+								<thead>
+									<tr>
+										<th>From</th>
+										<th>To</th>
+										<th>Title / Role</th>
+										<th>Company Name</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% pro_experiences = @profile.pro_experiences %>
+									<% pro_experiences.each do |s| %>
+									<tr id="pro_experience<%= s.id %>">
+										<td><%= s.from.to_date %></td>
+										<td><%= s.to.to_date %></td>
+										<td><%= s.title %></td>
+										<td><%= s.company_name %></td>
+										<td>
+											<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
+											<%= link_to('<i class="icon-trash"></i>'.html_safe, pro_experience_path(s), :data => { :confirm => "Are you sure?" }, remote: true, method: :delete, :class => 'btn') %>
+										</td>
+									</tr>
+									<% end %>
+									<tr id="pro-exp-template" style="display: none;">
+										<td id="from"></td>
+										<td id="to"></td>
+										<td id="title"></td>
+										<td id="company_name"></td>
+										<td id="action">
+											<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
+											<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true, :class => 'btn') %>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+				</div><!--/row-fluid-->
+				<br>
+				<!-- Education Block  -->
+				<div class="row-fluid">
+						<div class="alert alert-info">
+							<span style="font-size:16px;">Education</span>
+							<span style="font-size:15px;" class="pull-right">
+								<a data-toggle="collapse" data-target="#add-education">
+									<i class="icon-edit"></i>
+								</a>
+							</span>
+						</div>
+            <%= render :partial => "add_education" %>
+						<div class="span12">
+							<table class="table table-bordered" id="education_list">
+								<thead>
+									<tr>
+										<th>From</th>
+										<th>To</th>
+										<th>School</th>
+										<th>Area of Study</th>
+										<th width="25%">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% educations = @profile.educations %>
+									<% educations.each do |s| %>
+									<tr id="education<%= s.id %>">
+										<td><%= s.from %></td>
+										<td><%= s.to %></td>
+										<td><%= s.school %></td>
+										<td><%= s.area_of_study %></td>
+										<td>
+											<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
+											<%= link_to('<i class="icon-trash"></i>'.html_safe, education_path(s), :data => { :confirm => "Are you sure?" }, remote: true, :method => :delete, :class => 'btn') %>
+										</td>
+									</tr>
+									<% end %>
+									<tr id="education-template" style="display: none;">
+										<td id="from"></td>
+										<td id="to"></td>
+										<td id="area_of_study"></td>
+										<td id="school"></td>
+										<td id="action">
+											<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
+											<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true, :class => 'btn') %>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+				</div><!--/row-fluid-->
+				<br>
+				<!-- Other Experience Block  -->
+				<div class="row-fluid">
+					<div class="alert alert-info">
+						<span style="font-size:16px;">Other Experience</span>
+						<span style="font-size:15px;" class="pull-right">
+							<a data-toggle="collapse" data-target="#add-other-exp">
+								<i class="icon-edit"></i>
+							</a>
+						</span>
+					</div>
+          <%= render :partial => "add_other_exp" %>
+					<div class="span12">
+						<table class="table table-bordered" id="other_experience_list">
+							<thead>
+								<tr>
+									<th>Subject</th>
+									<th width="50%">Description</th>
+									<th width="25%">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% other_experiences = @profile.other_experiences %>
+								<% other_experiences.each do |s| %>
+								<tr id="other_experience<%= s.id %>">
+									<td><%= s.name %></td>
+									<td><%= s.description %></td>
+									<td>
+										<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
+										<%= link_to('<i class="icon-trash"></i>'.html_safe, other_experience_path(s), :data => { :confirm => "Are you sure?" }, remote:true, :method => :delete, :class => 'btn') %>
+									</td>
+								</tr>
+								<% end %>
+								<tr id="other-exp-template" style="display: none;">
+									<td id="name"></td>
+									<td id="description"></td>
+									<td id="action">
+										<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
+										<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true, :class => 'btn') %>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div><!--/row-fluid-->
+			</div><!--/span9-->
+  	</div><!--/row-fluid-->    
+	</div>
+
+</div><!--/container-->		
+<!--=== End Content Part ===

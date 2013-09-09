@@ -1,0 +1,12 @@
+<div id="add-job-type" class="collapse">
+  <%= form_for @job_type, remote: true, html: {:method => :post, :class => 'form-horizontal' } do |p| %>
+  	<div class="alert alert-danger hide">
+      <span></span>
+    </div>
+    <div class="controls form-inline">
+      <%= p.text_field :name, autofocus: true %>
+      <%= p.submit "Save", :class => "btn btn-success" %>
+      <a class="btn" data-dismiss="collapse" onclick="$('#add-job-type').collapse('hide');">Cancel</a>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">	
+	<div class="row-fluid">
+		<div class="span3">
+	    <%= render "profile_sidebar" %><!-- :locals => { member: Member.new(), group_id: @group.id } -->
+		</div><!--/span3-->
+		<!-- Search Results -->
+		<div class="span8">
+			<br>
+			<%= render "layouts/messages" %>
+			<% @preps.each do |p| %>
+		    <div class="row-fluid">
+		      <div class="booking-blocks">
+		      	<!-- unless request open page, then show user's image -->
+		      	<% if params[:status] == "scheduled" %>
+		        <div class="span3 pull-left booking-img">
+	            <img src="/assets/blank_user.jpg" alt="">
+	            <% confirmed = p.prep_applications.find_by_status(:scheduled) %>
+	            <h5>
+	            	<strong>
+	            		<%= link_to confirmed.user.fullname, profile_path(confirmed.user.profile.token) %>
+	            	</strong>
+	            	 - $<%= confirmed.contract.price %></h5>
+	            <ul class="unstyled inline">
+	               <li><span class="rating-static rating-45"></span></li>
+	               <li><i class="icon-star"></i></li>
+	               <li><i class="icon-star"></i></li>
+	               <li><i class="icon-star"></i></li>
+	               <li><i class="icon-star"></i></li>
+	               <li><i class="icon-star-empty"></i></li>
+	            </ul>
+		        </div>
+		        <div class="span8" style="overflow:hidden;">
+		        <% else %><!-- If request open page, then do not show preppee's image -->
+		        <div class="span11" style="overflow:hidden;">
+		        <% end %>
+	            <h2>
+	            	<% if params[:status] == "open" %>
+	            		<%= link_to p.title, prep_prep_applications_path(p), :class => 'color-blue' %>
+	            	<% else %>
+	            		<%= link_to p.title, prep_path(p), :class => 'color-blue' %>
+	            	<% end %>
+	            </h2>
+	            <p>
+	            	Posted <%= p.elapsed %> ago  - <%= p.prep_applications.size %> preppees applied
+	            </p>
+	            <p>
+								<% if !p.description.nil? && p.description.length > 200 %>
+		            	<%= p.description.slice(0, 200) + "... " %>
+		            	<a href="#">more</a>
+		            <% else %>
+		            	<%= p.description %>
+		            <% end %>
+		          </p>
+		          <div class="pull-left blog-page blog-item">
+			         	<ul class="unstyled inline blog-tags">
+			         		<%
+			         			required_skills = p.required_skills.split(',')
+			         		%>
+			         		<% required_skills.each do |s| %>
+		            		<li><a href="#"><%= s %></a></li>
+		            	<% end %>
+		            </ul>
+		          </div>
+			      </div>
+	        </div>
+		    </div>
+	    <% end %>
+		</div><!--/span9-->
+	</div><!--/row-fluid-->
+</div><!--/container-->

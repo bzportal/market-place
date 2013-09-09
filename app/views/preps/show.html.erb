@@ -1,0 +1,116 @@
+<!--=== Content Part ===-->
+<div class="container">
+  <br><br>
+  <div class="span10" style="float: none !important; margin-left: auto; margin-right: auto;">
+  <div class="row-fluid">
+    <div class="span8">
+      <!-- Prep Title -->
+      <div class="row-fluid margin-bottom-40">
+        <h2><%= @prep.title %></h2>
+        <p><%= @prep.prep_type.capitalize %> - <%= @prep.elapsed %> ago</p>
+      </div><!--/row-->
+      <!-- //End Prep Title -->
+
+      <div class="row-fluid">
+        <div class="alert alert-info">
+          <h4>Prep Description</h4>
+        </div>
+        <div class="span11">
+          <p><%= @prep.description.gsub("\n", "<br>").html_safe unless @prep.description == "" %></p>
+          <br><br>
+          <p><strong>Skills Required</strong></p>
+          <div class="pull-left blog-page blog-item">
+            <ul class="unstyled inline blog-tags pull-left">
+              <%
+              unless @prep.required_skills.nil?
+                tags = @prep.required_skills.split(',')
+              %>
+              <% tags.each do |t| %>
+                <li><a href="#"><%= t %></a></li>
+              <% 
+                end 
+              end
+              %>
+            </ul>
+          </div>
+          <br><br><br>
+        </div>
+      </div><!--/row-fluid-->
+      <div class="row-fluid">
+        <div class="span5 pull-right">
+          <p>Applied Preppers: <%= @prep.prep_applications.size %></p>
+          <% hired = @prep.prep_applications.find_by_status(:confirmed) %>
+          <% unless hired.nil? %>
+          Hired: <%= link_to hired.user.fullname, profile_path(hired.user.profile.token) %>
+          <% end %>
+        </div>
+      </div><!--/row-fluid-->
+      <br>
+      <!--Application List -->
+      <div class="row-fluid">
+        <div class="alert alert-info">
+          <h4>Applications</h4>
+        </div>
+        <div class="span11">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Contractor</th>
+                <th>Date Applied</th>
+                <th>Initiated By</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @prep.prep_applications.each do |a| %>
+              <tr>
+                <td><%= a.user.fullname %></td>
+                <td><%= a.elapsed %> ago</td>
+                <td>Contractor</td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <br><br><br><br><br>
+      </div><!-- Application List -->
+      <!-- Prepee's History -->
+      <div class="row-fluid">
+        <div class="alert alert-info">
+          <h4>Preppee's History</h4>
+        </div>
+        <br><br><br><br><br>
+      </div><!-- Preppee's History -->
+    </div><!--/span8-->
+
+    <div class="span4" style="background-color: #f3f3f3; padding: 20px;">
+      <!-- Prep Overview -->
+      <p class="text-center">
+        <a data-toggle="modal" href="#apply-form" class="btn btn-success btn-large">
+          <strong>Apply for this Prep</strong>
+        </a>
+        <%= render :partial => "apply_form" %>
+      </p>
+      <br>
+      <strong>Prep Overview</strong>
+      <br>
+      <table class="table table-condensed">
+        <thead>
+          <tr style="font-weight: normal;">
+            <td>Type</td>
+            <td style="text-align: right;"><%= @prep.prep_type.capitalize %></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#Estimated hours for prep</td>
+            <td style="text-align: right;">40 mins</td>
+          </tr>
+          <tr>
+            <td>#Due date</td>
+            <td style="text-align: right;">August 14, 2013</td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!--/span4-->
+  </div><!--/row-fluid-->    
+</div><!--/container-->   

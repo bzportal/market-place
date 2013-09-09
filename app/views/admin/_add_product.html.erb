@@ -1,0 +1,27 @@
+<div id="add-product" class="modal" style="display: none;">
+  <%= simple_form_for :product, url: products_path, novalidate: false, html: {:method => :post, :class => 'form-horizontal' } do |p| %>
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>Add new product</h3>
+    </div>
+    <div class="modal-body">
+      <%= p.input :name, autofocus: true %>
+      <%= p.input :product_type, collection: Product::PRODUCT_TYPE.map.with_index{|m, i| [m, i]} %>
+      <%= p.input :session_type, collection: Product::SESSION_TYPE.map.with_index{|m, i| [m, i]}, :item_wrapper_class => 'inline' %>
+      <%= p.input :price, placeholder: "Input Price" %>
+      <%= p.input :session_length %>
+
+      <div class="control-group">
+        <%= p.label :url, 'URL', :class => 'control-label' %>
+        <div class="controls">
+          <%= p.file_field :cover %>
+          <%= p.file_field :book_url %>
+        </div>
+      </div>
+      <div class="controls form-inline">
+        <%= p.submit "Save", :class => "btn btn-success" %>
+        <a class="btn" data-dismiss="collapse" onclick="$('#add-product').collapse('hide');">Cancel</a>
+      </div>
+    </div>
+  <% end %>
+</div>

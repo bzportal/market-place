@@ -1,0 +1,34 @@
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+	<div class="container">
+        <h1 class="color-green pull-left">Login</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Login</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+<!--=== Content Part ===-->
+<div class="container">		
+	<div class="row-fluid">
+	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'log-page' }) do |f| %>
+		<h3>Login to your account</h3>
+		<%= render "layouts/messages" %>
+		<div class="input-prepend">
+	      <span class="add-on"><i class="icon-user"></i></span>
+	  		<%= f.email_field :email, :autofocus => true, :class => 'input-xlarge', placeholder: "Email" %>
+	  </div>
+	  <div class="input-prepend">
+	      <span class="add-on"><i class="icon-lock"></i></span>
+	  		<%= f.password_field :password, :autofocus => true, :class => 'input-xlarge', placeholder: "Password" %>
+	  </div>
+	  <div class="controls form-inline">
+	  	<%= f.input :remember_me, :as => :boolean, :label => false, :inline_label => true if devise_mapping.rememberable? %>
+      <%= f.button :submit, "Sign in", :class => 'btn-u pull-right' %>
+      <%= render "devise/shared/links" %>
+    </div>
+   <% end %>
+  </div><!--/row-fluid-->
+</div><!--/container-->		
+<!--=== End Content Part ===-->

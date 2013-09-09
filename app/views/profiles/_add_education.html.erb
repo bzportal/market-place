@@ -1,0 +1,37 @@
+<div id="add-education" class="collapse">
+  <%= simple_form_for @education, remote: true, :html => {:method => :post, :class => 'form-horizontal' } do |p| %>
+    <div class="alert alert-danger hide">
+      <span></span>
+    </div>
+    
+    <%= hidden_field_tag :profile_id, @profile.id %>
+    <%= p.input :school, autofocus: true %>
+
+    <div class="control-group">
+      <%= p.label :from, 'From', :class => 'control-label' %>
+      <div class="controls">
+        <%= p.input_field :from, :class => 'date-picker' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= p.label :to, 'To', :class => 'control-label' %>
+      <div class="controls">
+        <%= p.input_field :to, :class => 'date-picker' %>
+      </div>
+    </div>
+
+    <%= p.input :degree, collection: Education::DEGREES, prompt: "Please Select..." %>
+    <%= p.input :area_of_study %>
+    <div class="control-group">
+      <%= p.label :comments, 'Comments', :class => 'control-label' %>
+      <div class="controls">
+        <%= p.text_area :comments, :class => 'overview' %>
+      </div>
+    </div>
+    <div class="controls form-inline">
+      <%= p.submit "Add", :class => "btn btn-success" %>
+      <a class="btn" data-dismiss="collapse" onclick="$('#add-education').collapse('hide');">Cancel</a>
+    </div>
+  <% end %>
+</div>
