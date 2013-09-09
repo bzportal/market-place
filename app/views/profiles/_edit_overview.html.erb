@@ -1,29 +1,31 @@
-<div id="profile-overview" class="collapse" style="display: none;">
+<div id="profile-overview" class="modal" style="display: none;">
   <%= simple_form_for @profile, :url => profile_path(@profile), :html => {:method => :put, :class => 'form-horizontal' } do |p| %>
-    <div class="alert alert-danger hide">
-      <span></span>
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>Apply for Prep</h3>
     </div>
-    
-    <%= p.hidden_field :token %>
-    <div class="control-group">
-      <%= p.label :email, 'User Email', :class => 'control-label' %>
-      <div class="controls">
-        <%= text_field_tag :email, current_user.email %>
+    <div class="modal-body">
+      <%= p.hidden_field :token %>
+      <div class="control-group">
+        <%= p.label :email, 'User Email', :class => 'control-label' %>
+        <div class="controls">
+          <%= text_field_tag :email, current_user.email %>
+        </div>
       </div>
-    </div>
-    <%= p.input :title %>
+      <%= p.input :title %>
 
-    <%= p.input :year_of_experience, collection: 1..20, prompt: "Please Select..." %>
-    <%#= p.input :english_skill, collection: EnglishSkill.all, prompt: "Please Select...", requred: true %>
-    <div class="control-group">
-      <%= p.label :overview, 'Overview', :class => 'control-label' %>
-      <div class="controls">
-        <%= p.text_area :overview, :class => 'overview' %>
+      <%= p.input :year_of_experience, collection: 1..20, prompt: "Please Select..." %>
+      <%#= p.input :english_skill, collection: EnglishSkill.all, prompt: "Please Select...", requred: true %>
+      <div class="control-group">
+        <%= p.label :overview, 'Overview', :class => 'control-label' %>
+        <div class="controls">
+          <%= p.text_area :overview, :class => 'description' %>
+        </div>
       </div>
-    </div>
-    <div class="controls form-inline">
-      <%= p.submit "Save", :class => "btn btn-success" %>
-      <a class="btn" data-dismiss="collapse" onclick="$('#profile-overview').collapse('hide');">Cancel</a>
+      <div class="controls form-inline">
+        <%= p.submit "Save", :class => "btn btn-success" %>
+        <a class="btn" data-dismiss="collapse" onclick="$('#profile-overview').collapse('hide');">Cancel</a>
+      </div>
     </div>
   <% end %>
 </div>

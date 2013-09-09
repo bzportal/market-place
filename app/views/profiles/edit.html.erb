@@ -11,7 +11,7 @@
 				<div class="alert alert-info">
 					<span style="font-size:16px;">My Account Summary</span>
 					<span style="font-size:15px;" class="pull-right">
-						<a data-toggle="collapse" data-target="#profile-overview"><i class="icon-edit"></i></a>
+						<a data-toggle="modal" data-target="#profile-overview"><i class="icon-edit"></i></a>
 					</span>
 	        <%= render :partial => "edit_overview" %>
 				</div>
@@ -23,13 +23,15 @@
             <dt>Portrait</dt>
             <dd>
             	<div class="row-fluid">
-              	<div class="span3"><%= image_tag @profile.photo.url(:medium) %></div>
+              	<div class="span3">
+              		<%= image_tag @profile.photo.url(:medium), id: "photo" %>
+              	</div>
               	<div class="span5">
               		<p>Draw in a new photo, or as:</p>
-              		<a style="color: #0093f0;">Edit Photo</a> |
+              		<a style="color: #0093f0;" id="profile_photo_link">Edit Photo</a>
               		<!-- <a style="color: #0093f0;">Delete Photo</a> -->
               	</div>
-              	<%= form_for @profile, url: profile_path(@profile), method: "put" do |f| %>
+              	<%= form_for :profile, url: profile_path(@profile), html: { method: "put", id: "photo_form" } do |f| %>
               		<%= f.file_field :photo, :class => "hidden" %>
               	<% end %>
               </div>

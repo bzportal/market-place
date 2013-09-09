@@ -1,3 +1,4 @@
+
 /* Ajax services
 -----------------------------------------------------------------*/
 /* Education Ajax */
@@ -122,6 +123,30 @@ $("#new_skill").on("ajax:success", function(e, data, status, xhr)
 
 $("#skill_list").on("click", "li", function(event){
   $(this).remove();
+});
+
+
+/* profile image
+-----------------------------------------------------------------*/
+$('#profile_photo_link').on('click', function(){
+  $('#profile_photo').click();
+});
+
+$('#profile_photo').on('change', function(input){
+  
+  evt = input.target;
+  if (evt.files && evt.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#photo')
+            .attr('src', e.target.result)
+            .width(150);
+    };
+
+    reader.readAsDataURL(evt.files[0]);
+    $("#photo_form").submit();
+  }
 });
 
 /* initialize the calendar

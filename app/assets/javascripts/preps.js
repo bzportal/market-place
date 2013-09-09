@@ -1,3 +1,3 @@
 $(function(){
-	$(".chzn-select").chosen(); 
+	$(".chzn-select").chosen({width: "500px"});
 });

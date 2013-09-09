@@ -15,8 +15,7 @@ class Profile < ActiveRecord::Base
     storage: :dropbox,
     dropbox_credentials: Rails.root.join("config/dropbox.yml"),
     default_url: "/assets/blank_user.jpg", 
-    path: ":rails_root/public/upload/:class/:attachment/:style/:filename",
-    url: "/upload/:class/:attachment/:style/:filename"
+    path: "upload/:class/:attachment/:style/:filename"
 
   LANGUAGE_SKILLS = [ "1 - Basic written skills, no verbal skills", 
   "2 - Good written skills, no verbal skills",

@@ -15,6 +15,13 @@
 				<div class="headline">
 					<h4>Profile Overview</h4>
 				</div>
+				<div class="row-fluid" style="margin-left: 180px;">
+					<img id="photo" src="/assets/blank_user.jpg" style="width: 150px; border: 1px solid #999;">
+					<h5>
+						<a id="profile_photo_link">Add Photo</a>
+					</h5>
+					<%= p.file_field :photo, :class => "hidden" %>
+				</div>
 		    <%= p.input :title %>
 	      <%= p.input :year_of_experience, collection: 1..20, prompt: "Please Select..." %>
 

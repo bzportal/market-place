@@ -34,10 +34,16 @@ class ProfilesController < ApplicationController
 
 	def update
 		@profile = Profile.find_by_id(params[:id])
-		if @profile.update_attributes(params[:profile])
-      redirect_to edit_profile_path(@profile.token), :notice => "Profile overview is saved successfully."
-    else
-      redirect_to edit_profile_path(params[:profile][:token]), :alert => "Unable to update the member information."
-    end
+
+		respond_to do |format|
+			if @profile.update_attributes(params[:profile])
+				format.html { redirect_to edit_profile_path(@profile.token), :notice => "Profile overview is saved successfully." }
+				format.js {}
+				format.json { render json: @profile, status: :created }
+	    else
+	      format.html { redirect_to edit_profile_path(params[:profile][:token]), :alert => "Unable to update the member information." }
+	      format.json { render json: @profile.errors, status: :unprocessable_entity }
+	    end
+	  end
 	end
 end
