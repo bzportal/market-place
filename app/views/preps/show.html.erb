@@ -88,10 +88,10 @@
         <!-- Prep Overview -->
 
         <p class="text-center">
-          <a data-toggle="modal" data-target="#apply-form" class="btn btn-success btn-large">
+          <a data-toggle="modal" data-target="#apply-form" class="btn btn-large <%= 'btn-success' if @applied.nil? %>">
             <strong>Apply for this Prep</strong>
           </a>
-          <% if @applied == false %>
+          <% if @applied.nil? %>
             <%= render :partial => "apply_form" %>
           <% end %>
         </p>

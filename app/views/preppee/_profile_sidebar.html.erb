@@ -30,13 +30,17 @@
 
 <script type="text/javascript">
 $(function(){
+
   $("#preppee_calendar").fullCalendar({
     events: [
+    <% @scheduled_contracts.each do |schedule| %>
     {
-      title: '1',
-      start: new Date(2013, 8, 20),
+      title: '<%= schedule[1] %>',
+      start: new Date(Date.parse("<%= schedule[0] %>")),
       className: 'btn-u-red'
-    }],
+    },
+    <% end %>
+    ],
     header: {
       left: 'prev',
       center: 'title',

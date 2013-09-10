@@ -32,8 +32,10 @@ class PrepsController < ApplicationController
 	def update
 	end
 
-	def show
+	def show # for prepper
 		@prep = Prep.find(params[:id])
+		@applied = @prep.prep_applications.find_by_user_id(current_user.id)
+		puts @applied
 	end
 
 	def index

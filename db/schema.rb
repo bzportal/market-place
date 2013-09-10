@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908145536) do
+ActiveRecord::Schema.define(:version => 20130910184558) do
 
   create_table "contracts", :force => true do |t|
     t.integer  "prep_application_id"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20130908145536) do
     t.string   "comments",            :limit => 5000
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.integer  "prepper_id"
+    t.integer  "preppee_id"
   end
 
   create_table "educations", :force => true do |t|

@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @users = User.joins(:roles).where(roles: {name: "prepper"})
+    if @users.size == 0
+      flash[:alert] = "There is no registered preppers"
+    else
+      flash[:alert] = nil
+    end
   end
 
   def show

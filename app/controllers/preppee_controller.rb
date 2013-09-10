@@ -28,13 +28,8 @@ class PreppeeController < ApplicationController
 	end
 
 	def scheduled_contracts
-		scheduled_preps = Contract.select("count(due_start_date) as count").group("due_start_date")
-		
+		@scheduled_contracts = Contract.where(preppee_id: current_user.id)
+		.group("contracts.due_start_date").count
 
-		return if scheduled_preps.nil?
-		# @scheduled_contracts = scheduled_preps.contract.distinct(:due_start_time)
-		puts "------------------------------------------"
-
-		puts scheduled_preps.inspect
 	end
 end

@@ -23,7 +23,7 @@ class PrepApplicationsController < ApplicationController
 		if @prep.prep_applications.empty?
 			flash[:alert] = "There is no applicants for this prep"
 		else
-			flash[:alert] = ""
+			flash[:alert] = nil
 		end
 	end
 
