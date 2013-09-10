@@ -12,7 +12,7 @@ class ContractsController < ApplicationController
       application.save
       prep.status = "open"
   		prep.save
-      PrepMailer.hired(application.user, prep).deliver
+      PrepMailer.hired(current_user, application.user, prep).deliver
 
   		flash[:alert] = "New contract is successfully created."
   		redirect_to "/preppee/scheduled"

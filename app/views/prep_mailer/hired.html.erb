@@ -1,5 +1,5 @@
 <div style="width: 700px;">
-  <h2 style="color: #3498db"><%= current_user.fullname %> hired you. Please confirm for schedule </h2>
+  <h2 style="color: #3498db"><%= @preppee.fullname %> hired you. Please confirm for schedule </h2>
   <hr>
   <h4><%= link_to @prep.title, '#' %></h4>
   <p><%= @prep.description.gsub("\n", "<br>").html_safe unless @prep.description.nil? %></p>

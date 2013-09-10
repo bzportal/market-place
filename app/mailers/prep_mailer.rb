@@ -7,8 +7,9 @@ class PrepMailer < ActionMailer::Base
     mail(to: user.email, subject: "You are invited for prep")
   end
 
-  def hired(user, prep)
+  def hired(preppee, user, prep)
     @prep = prep
+    @preppee = preppee
     mail(to: user.email, subject: "Your application is approved")
   end
 
