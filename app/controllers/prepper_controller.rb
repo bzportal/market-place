@@ -39,8 +39,8 @@ class PrepperController < ApplicationController
 	end
 
 	def scheduled_contracts
-		@scheduled_contracts = Contract.includes(:prep_application)
-			.where("prep_applications.user_id == ?", current_user.id)
+		@scheduled_contracts = PrepApplication.joins(:contract).where(user_id: current_user.id)
+		.group("contracts.due_start_date").count
 
 	end
 end

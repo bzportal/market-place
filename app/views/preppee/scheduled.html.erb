@@ -4,7 +4,7 @@
 	    <%= render "profile_sidebar" %><!-- :locals => { member: Member.new(), group_id: @group.id } -->
 		</div><!--/span3-->
 		<!-- Search Results -->
-		<div class="span8">
+		<div class="span9">
 			<br>
 			<%= render "layouts/messages" %>
 			<% @preps.each do |p| %>
@@ -18,7 +18,7 @@
 	            	<strong>
 	            		<%= link_to confirmed.user.fullname, profile_path(confirmed.user.profile.token) %>
 	            	</strong>
-	            	 - $<%= confirmed.contract.price %></h5>
+	            </h5>
 	            <ul class="unstyled inline">
 	               <li><span class="rating-static rating-45"></span></li>
 	               <li><i class="icon-star"></i></li>
@@ -43,10 +43,10 @@
 		            	<%= p.description %>
 		            <% end %>
 		          </p>
-		          <div class="pull-left blog-page blog-item">
-			         	<ul class="unstyled inline blog-tags">
+		          <div>
+			         	<ul class="inline blog-tags">
 			         		<%
-			         			required_skills = p.required_skills.split(',')
+			         			required_skills = p.required_skills.split(',')[0..3]
 			         		%>
 			         		<% required_skills.each do |s| %>
 		            		<li><a href="#"><%= s %></a></li>

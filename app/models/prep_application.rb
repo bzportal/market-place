@@ -1,7 +1,5 @@
 class PrepApplication < ActiveRecord::Base
   attr_accessible :cover_letter, :status
-
-  validates_presence_of :status
   
   belongs_to :user
   belongs_to :prep

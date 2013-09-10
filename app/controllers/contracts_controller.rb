@@ -22,8 +22,10 @@ class ContractsController < ApplicationController
   def invite
     prep = Prep.find_by_id(params[:prep_id])
     application = prep.prep_applications.create
+    application
     prepper = User.find_by_id(params[:prepper_id])
     application.user_id = prepper.id unless prepper.nil?
+    application.save
 
     contract = Contract.new(params[:contract])
     contract.prep_application_id = application.id

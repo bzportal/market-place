@@ -21,19 +21,20 @@
 		<div id="prepper_calendar" class="calendar"></div>
 	</div>
 </div>
-<%= @scheduled_contracts.inspect %>
+
 <script type="text/javascript">
 $(function(){
-  
-  var d = new Date(Date.parse("2013-09-11"));
 
   $("#prepper_calendar").fullCalendar({
     events: [
+    <% @scheduled_contracts.each do |schedule| %>
     {
-      title: '1',
-      start: new Date(2013, 8, 20),
+      title: '<%= schedule[1] %>',
+      start: new Date(Date.parse("<%= schedule[0] %>")),
       className: 'btn-u-red'
-    }],
+    },
+    <% end %>
+    ],
     header: {
       left: 'prev',
       center: 'title',
