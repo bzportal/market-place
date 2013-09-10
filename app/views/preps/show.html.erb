@@ -21,8 +21,8 @@
             </p>
             <br><br>
             <p><strong>Skills Required</strong></p>
-            <div class="pull-left blog-page blog-item">
-              <ul class="unstyled inline blog-tags pull-left">
+            <div>
+              <ul class="inline blog-tags">
                 <%
                 unless @prep.required_skills.nil?
                   tags = @prep.required_skills.split(',')
@@ -35,7 +35,7 @@
                 %>
               </ul>
             </div>
-            <br><br><br>
+            <br><br>
           </div>
         </div><!--/row-fluid-->
         <div class="row-fluid">
@@ -86,11 +86,14 @@
 
       <div class="span4" style="background-color: #f3f3f3; padding: 20px;">
         <!-- Prep Overview -->
+
         <p class="text-center">
           <a data-toggle="modal" data-target="#apply-form" class="btn btn-success btn-large">
             <strong>Apply for this Prep</strong>
           </a>
-          <%= render :partial => "apply_form" %>
+          <% if @applied == false %>
+            <%= render :partial => "apply_form" %>
+          <% end %>
         </p>
         <br>
         <strong>Prep Overview</strong>

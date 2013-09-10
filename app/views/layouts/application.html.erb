@@ -5,6 +5,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Sleekgeek Prep LLC" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Sleekgeek Prep LLC" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
@@ -18,5 +19,4 @@
     <%= render 'shared/copyright' %>
     <!--! end of #main -->
   </body>
-  <%= javascript_include_tag "application" %>
 </html>

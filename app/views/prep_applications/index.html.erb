@@ -4,6 +4,7 @@
 			<!-- Search Results -->
 			<div class="span12">
 				<br>
+				<%= link_to "<< Back", :back %>
 				<%= render "layouts/messages" %>
 				<% @prep.prep_applications.each do |p| %>
 					<% next if p.status == "declined" %>

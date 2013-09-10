@@ -1,7 +1,7 @@
 class ContractsController < ApplicationController
   def create
-  	prep = Prep.find_by_id(params[:prep_id])
-  	application = PrepApplication.find_by_id(params[:application_id])
+  	prep = Prep.find_by_id!(params[:prep_id])
+  	application = PrepApplication.find_by_id!(params[:application_id])
   	contract = Contract.new(params[:contract])
   	contract.prep_application_id = application.id
   	
@@ -27,12 +27,11 @@ class ContractsController < ApplicationController
 
     contract = Contract.new(params[:contract])
     contract.prep_application_id = application.id
-    
+
     if contract.save
       application.status = "confirm"
-      prep.status="open"
       application.save
-      prep.save
+
       PrepMailer.invite(prepper, prep).deliver
 
       redirect_to "/preppee/scheduled", notice: "New contract is successfully created."

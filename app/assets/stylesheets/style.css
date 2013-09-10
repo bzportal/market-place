@@ -1470,7 +1470,7 @@ ul.blog-tags a {
 }
 
 .booking-blocks ul.inline li {
-  padding: 0;
+  *padding: 0;
 }
 ul.inline li{
 	padding: 2px 0px;
@@ -1925,4 +1925,9 @@ dt, dd {
 .required abbr
 {
 	color: red;
+}
+
+.error
+{
+	color: #e00;
 }

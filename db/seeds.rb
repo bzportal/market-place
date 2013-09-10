@@ -20,7 +20,44 @@ puts 'user: ' << user.first_name
 user.add_role :admin
 
 puts 'Loading Job types'
-[ "Accouting", "Financing", "Business", "Consulting", "Investment", "Actuary", "Computer Science", "Mathmathics"].each do |job_type|
+
+["Accounting",
+"Actuary",
+"Asset Management",
+"Capital Markets",
+"Commercial Banking",
+"Commodities",
+"Compliance / Legal",
+"Computer Science",
+"Consulting",
+"Credit",
+"Debt / Fixed Income",
+"Derivatives",
+"Education",
+"Equities",
+"Finance",
+"FX & Money Markets",
+"Government",
+"Human Resources",
+"Information Technology",
+"Insurance",
+"Investment Banking",
+"Investment Management",
+"Investor Relations",
+"Marketing",
+"Medical",
+"Operations",
+"Pharmaceutical",
+"Public Relations",
+"Private Equity / Venture Capital",
+"Quantitative Analysis",
+"Real Estate",
+"Research",
+"Retail Banking",
+"Risk Management",
+"Sales and Marketing",
+"Trading",
+"Wealth Management"].each do |job_type|
 	JobType.find_or_create_by_name({ :name => job_type }, :without_protection => true)
 end
 

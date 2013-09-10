@@ -4,14 +4,16 @@
 	    <%= render "profile_sidebar" %><!-- :locals => { member: Member.new(), group_id: @group.id } -->
 		</div><!--/span3-->
 		<!-- Search Results -->
-		<div class="span8">
+		<div class="span9">
 			<br>
 			<%= render "layouts/messages" %>
 			<% @preps.each do |p| %>
 		    <div class="row-fluid">
 		      <div class="booking-blocks">
 		        <div class="span3 pull-left booking-img">
-  						<%= image_tag p.user.profile.photo.url(:medium) %>
+		        	<div class="row-fluid">
+  							<%= image_tag p.user.profile.photo.url(:medium) %>
+  						</div>
 	            
 	            <h5>
 	            	<strong>
@@ -38,10 +40,10 @@
 		            	<%= p.description %>
 		            <% end %>
 		          </p>
-		          <div class="pull-left blog-page blog-item">
-			         	<ul class="unstyled inline blog-tags">
+		          <div>
+			         	<ul class="inline blog-tags">
 			         		<%
-			         			required_skills = p.required_skills.split(',')
+			         			required_skills = p.required_skills.split(',')[0..3]
 			         		%>
 			         		<% required_skills.each do |s| %>
 		            		<li><a href="#"><%= s %></a></li>

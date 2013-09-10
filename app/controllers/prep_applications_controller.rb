@@ -20,17 +20,24 @@ class PrepApplicationsController < ApplicationController
 	
 	def index
 		@prep = Prep.find_by_id(params[:prep_id])
+		if @prep.prep_applications.empty?
+			flash[:alert] = "There is no applicants for this prep"
+		else
+			flash[:alert] = ""
+		end
 	end
 
 
 	def confirmed
-		@application = PrepApplication.find_by_id!(params[:prep_id])
+		puts params.inspect
+		@application = PrepApplication.find_by_id!(params[:prep_application_id])
 		@application.status = "scheduled"
-		@application.save
 
 		@application.prep.status = "scheduled"
-		@application.prep.save
+		puts @application.prep.save
 		
+		puts @application.save
+
 		PrepMailer.confirmed(@application.prep.user, @application.prep).deliver
 
 		redirect_to "/prepper/scheduled"

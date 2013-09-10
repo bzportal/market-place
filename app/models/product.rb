@@ -2,8 +2,9 @@ class Product < ActiveRecord::Base
   attr_accessible :name, :price, :product_type, :session_type, :session_length,
   				:cover, :book_url # for guide book
 
-  has_attached_file :cover, :styles => { :medium => "150x200>", mini: "100x100>" }, 
+  has_attached_file :cover, :styles => { :medium => "150x200>", mini: "50x50>" }, 
   	storage: :dropbox,
+    # default_url: "/assets/blank_book_cover.jpg",
     dropbox_credentials: Rails.root.join("config/dropbox.yml"),
     path: ":rails_root/public/upload/:class/:attachment/:style/:filename",
   	url: "/upload/:class/:attachment/:style/:filename"

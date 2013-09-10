@@ -11,16 +11,19 @@
       <div class="control-group">
         <%= p.label :due_start_time, 'Due Start Time', :class => 'control-label' %>
         <div class="controls">
-          <%= p.input_field :due_start_date, required: true, :class => 'date-picker', placeholder: "Input Start Date" %>
-        </div>
-        <div class="controls">
-          <%= p.input_field :due_start_time, required: true, placeholder: "HH:mm" %>
+          <%= p.input_field :due_start_date, required: true, :class => 'date-picker', placeholder: "Input Start Date", style: "width: 100px;" %>
+          <div class="input-append bootstrap-timepicker">
+            <%= p.input_field :due_start_time, required: true, :class => "timepicker input-mini" %>
+            <span class="add-on">
+              <i class="icon-time"></i>
+            </span>
+          </div>
         </div>
       </div>
       <div class="control-group">
         <%= p.label :comments, 'Description', :class => 'control-label' %>
         <div class="controls">
-          <%= p.text_area :comments, :style =>"width: 300px; height: 150px;" %>
+          <%= p.text_area :comments, required: true, :style =>"width: 300px; height: 150px;" %>
         </div>
       </div>
     </div>

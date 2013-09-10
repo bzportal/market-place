@@ -5,4 +5,6 @@ $(function(){
 		showSeconds: false,
 		showMeridian: false
 	});
+
+	$("#add-contract form").validate();
 });

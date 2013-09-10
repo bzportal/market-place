@@ -7,20 +7,29 @@
     <div class="modal-body">
       <%= p.input :name, autofocus: true %>
       <%= p.input :product_type, collection: Product::PRODUCT_TYPE.map.with_index{|m, i| [m, i]} %>
-      <%= p.input :session_type, collection: Product::SESSION_TYPE.map.with_index{|m, i| [m, i]}, :item_wrapper_class => 'inline' %>
-      <%= p.input :price, placeholder: "Input Price" %>
+      <%= p.input :session_type, collection: Product::SESSION_TYPE.map.with_index{|m, i| [m, i]} %>
+      <%= p.input :price, placeholder: "Input Price", type: :number %>
       <%= p.input :session_length %>
 
-      <div class="control-group">
-        <%= p.label :url, 'URL', :class => 'control-label' %>
+      <div class="control-group" id="product-cover-div" style="display:none">
+        <%= p.label :cover, 'Cover', :class => 'control-label' %>
         <div class="controls">
-          <%= p.file_field :cover %>
+          <img id="book_cover" src="/assets/blank_book_cover.jpg" style="width: 150px; border: 1px solid #999;">
+          <h5>
+            <a id="book_cover_link">Add Book Cover</a>
+          </h5>
+          <%= p.file_field :cover, style: "display: none;" %>
+        </div>
+      </div>
+      <div class="control-group" id="product-url-div"  style="display:none">
+        <%= p.label :book_url, 'Book Url', :class => 'control-label' %>
+        <div class="controls">
           <%= p.file_field :book_url %>
         </div>
       </div>
       <div class="controls form-inline">
         <%= p.submit "Save", :class => "btn btn-success" %>
-        <a class="btn" data-dismiss="collapse" onclick="$('#add-product').collapse('hide');">Cancel</a>
+        <a class="btn" data-dismiss="modal">Cancel</a>
       </div>
     </div>
   <% end %>

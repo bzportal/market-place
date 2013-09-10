@@ -18,6 +18,7 @@
 						<table id="product_type_table" class="table">
 							<thead>
 								<tr>
+									<th></th>
 									<th>Name</th>
 									<th>Type</th>
 									<th>Price</th>
@@ -28,6 +29,7 @@
 							<tbody>
 							<% @products.each do |p| %>
 								<tr>
+									<td><%= image_tag p.cover.url(:mini), style: "width: 50px", alt: "" %></td>
 									<td><%= p.name %></td>
 									<td><%= Product::PRODUCT_TYPE[p.product_type] %></td>
 									<td>$<%= p.price %>/min</td>

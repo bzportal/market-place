@@ -11,7 +11,7 @@ class PrepsController < ApplicationController
 		skills = params[:prep][:required_skills]
 		skill_names = Array.new
 		skills.each do |s|
-			skill = JobType.find_by_id(s)
+			skill = SkillTag.find_by_id(s)
 			skill_names.push skill.name unless skill.nil?
 		end
 		params[:prep][:required_skills] = skill_names.join(",")

@@ -99,8 +99,8 @@
 									<% pro_experiences = @profile.pro_experiences %>
 									<% pro_experiences.each do |s| %>
 									<tr id="pro_experience<%= s.id %>">
-										<td><%= s.from.to_date %></td>
-										<td><%= s.to.to_date %></td>
+										<td><%= s.from %></td>
+										<td><%= s.to %></td>
 										<td><%= s.title %></td>
 										<td><%= s.company_name %></td>
 										<td>

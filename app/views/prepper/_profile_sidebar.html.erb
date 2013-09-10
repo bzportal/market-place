@@ -15,18 +15,18 @@
   </div>
   <h4><a href="#"><%= current_user.fullname %></a></h4>
   <hr>
-  <div class="headline"><h4>Prep Sessions</h4></div>
-  <h5><%= link_to "#Modify Add Interview Prep" %></h5>
-  <h5><%= link_to "#Modify Add Resume Prep" %></h5>
-  <hr>
+
 	<div class="span11">
 		<div class="space"></div>
 		<div id="prepper_calendar" class="calendar"></div>
 	</div>
 </div>
-
+<%= @scheduled_contracts.inspect %>
 <script type="text/javascript">
 $(function(){
+  
+  var d = new Date(Date.parse("2013-09-11"));
+
   $("#prepper_calendar").fullCalendar({
     events: [
     {
