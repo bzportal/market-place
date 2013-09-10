@@ -2,7 +2,7 @@
   <h2 style="color: #3498db"> <%= @user.fullname %> applied for your prep </h2>
   <hr>
   <h4><%= link_to @prep.title, '#' %></h4>
-  <p><%= @prep.description %></p>
+  <p><%= @prep.description.gsub("\n", "<br>").html_safe unless @prep.description.nil? %></p>
   <hr>
   <p>sleekgeekllc.com</p>
   <p>Contacts: </p>
