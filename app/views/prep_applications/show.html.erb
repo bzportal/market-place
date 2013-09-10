@@ -30,7 +30,7 @@
 								<div class="row-fluid">
 									<ul class="unstyled inline blog-tags strong">
 										<% applicant.profile.skills.each do |s| %>
-											<li><a href="#"><%= JobType.find_by_id(s.name).name %></a></li>
+											<li><a href="#"><%= s.name %></a></li>
 										<% end %>
 									</ul>
 								</div>
