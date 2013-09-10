@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     @plan = params[:plan]
-    if @plan && ENV["ROLES"].include?(@plan) && @plan != "admin"
+    if @plan && !Role.find_by_name(@plan).nil? && @plan != "admin"
       super
     else
       redirect_to root_path, :notice => 'Please select user type.'
