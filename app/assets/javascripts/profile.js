@@ -157,7 +157,7 @@ $(function(){
 
   jQuery.validator.addMethod("greaterThan", 
     function(value, element, params) {
-      return value < $(params).val();
+      return value > $(params).val();
     },'Must be greater than From date.'
   );
 
