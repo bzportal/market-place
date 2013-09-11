@@ -8,16 +8,31 @@ $(function(){
     if (xhr.status == 201) // create
     {
       education = xhr.responseJSON;
-      template = $("tr#education-template").clone();
-      template.attr("id", "education" + education.id);
-      template.find("td#from").html(education.from);
-      template.find("td#to").html(education.to);
-      template.find("td#school").html(education.school);
-      template.find("td#area_of_study").html(education.area_of_study);
-      template.find("td a[data-method='delete']").attr("href", "/educations/" + education.id);
-      template.css("display", "table-row");
+      template = $("#education_template").clone();
+      console.log(template);
 
-      $("#education_list tbody").append(template);
+      template.attr("id", "education" + education.id);
+      
+      template.find("#title").html("<strong>" + education.title + "</strong> | " + education.company_name);
+      
+      template.find("#action a[data-method='delete']").attr("href", "/educations/" + education.id);
+      template.find("#edit_link").attr("href", "#education-" + education.id);
+      
+      template.find("#term").html(education.from + " ~ " + education.to);
+      template.find("#description").html(education.description);
+      // form
+      template.find("#education-").attr("id", "education-" + education.id);
+      template.find("#education- form").attr("action", "/educations/" + education.id);
+      // form elements
+      template.find("#education_from").val(education.from);
+      template.find("#education_to").val(education.to);
+      template.find("#education_area_of_study").val(education.area_of_study);
+      template.find("#education_school").val(education.school);
+      template.find("#education_description").val(education.description);
+      
+      template.css("display", "block");
+
+      $("#education_list").append(template);
     }
   }).bind("ajax:error", function(e, xhr, status, error){
     var result = xhr.responseJSON;
@@ -29,7 +44,7 @@ $(function(){
 
   // Delete
   $("#education_list").on("ajax:success", function(e, data, status, xhr){
-    $("tr#education" + xhr.responseJSON.id).remove();
+    $("#education" + xhr.responseJSON.id).remove();
   });
 
   /* Other Experience Ajax service
@@ -40,14 +55,26 @@ $(function(){
     if (xhr.status == 201) // create
     {
       other_experience = xhr.responseJSON;
-      template = $("tr#other-exp-template").clone();
-      template.attr("id", "other_experience" + other_experience.id);
-      template.find("td#name").html(other_experience.name);
-      template.find("td#description").html(other_experience.description);
-      template.find("td a[data-method='delete']").attr("href", "/other_experiences/" + other_experience.id);
-      template.css("display", "table-row");
 
-      $("#other_experience_list tbody").append(template);
+      template = $("#other-exp-template").clone();
+      template.attr("id", "other_experience" + other_experience.id);
+      
+      template.find("#title").html("<strong>" + other_experience.title + "</strong> | " + other_experience.company_name);
+      
+      template.find("#action a[data-method='delete']").attr("href", "/other_experiences/" + other_experience.id);
+      template.find("#edit_link").attr("href", "#other-exp-" + other_experience.id);
+
+      template.find("#description").html(other_experience.description);
+      // form
+      template.find("#other-exp-").attr("id", "other-exp-" + other_experience.id);
+      template.find("#other-exp- form").attr("action", "/other_experiences/" + other_experience.id);
+      // form elements
+      template.find("#other_experience_title").val(other_experience.title);
+      template.find("#other_experience_description").val(other_experience.description);
+
+      template.css("display", "block");
+
+      $("#other_experience_list").append(template);
     }
   }).bind("ajax:error", function(e, xhr, status, error){
     var result = xhr.responseJSON;
@@ -58,7 +85,7 @@ $(function(){
   });
   // Delete
   $("#other_experience_list").on("ajax:success", function(e, data, status, xhr){
-    $("tr#other_experience" + xhr.responseJSON.id).remove();
+    $("#other_experience" + xhr.responseJSON.id).remove();
   });
 
 
@@ -70,14 +97,27 @@ $(function(){
     {
       pro_experience = xhr.responseJSON;
       template = $("#pro_experience_template").clone();
-      console.log(template);
 
       template.attr("id", "pro_experience" + pro_experience.id);
       
       template.find("#title").html("<strong>" + pro_experience.title + "</strong> | " + pro_experience.company_name);
+      
       template.find("#action a[data-method='delete']").attr("href", "/pro_experiences/" + pro_experience.id);
+      template.find("#edit_link").attr("href", "#professional-exp-" + pro_experience.id);
+
       template.find("#term").html(pro_experience.from + " ~ " + pro_experience.to);
       template.find("#description").html(pro_experience.description);
+      // form
+      template.find("#professional-exp-").attr("id", "professional-exp-" + pro_experience.id);
+      template.find("#professional-exp- form").attr("action", "/pro_experiences/" + pro_experience.id);
+      // form elements
+      template.find("#pro_experience_from").val(pro_experience.from);
+      template.find("#pro_experience_to").val(pro_experience.to);
+      template.find("#pro_experience_title").val(pro_experience.title);
+      template.find("#pro_experience_company_name").val(pro_experience.company_name);
+      template.find("#pro_experience_description").val(pro_experience.description);
+
+      template.find("#professional-exp- form").attr("id", "edit_pro_experience_" + pro_experience.id);
 
       template.css("display", "block");
       $("#pro_experience_list").append(template);
@@ -93,6 +133,9 @@ $(function(){
   $("#pro_experience_list").on("ajax:success", function(e, data, status, xhr){
     $("#pro_experience" + xhr.responseJSON.id).remove();
   });
+
+
+
 
   $("#profile a[data-toggle='collapse']").on("click", function(){
     $("#profile .collapse").collapse('hide');
