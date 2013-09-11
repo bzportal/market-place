@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   attr_accessible :name, :price, :product_type, :session_type, :session_length,
-  				:cover, :book_url # for guide book
+  				:cover, :book_url, :description # for guide book
 
   has_attached_file :cover, :styles => { :medium => "150x200>", mini: "50x50>" }, 
   	storage: :dropbox,

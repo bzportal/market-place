@@ -1,0 +1,31 @@
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+	<div class="container">
+        <h1 class="color-green pull-left">Change Password</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Change Password</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+<!--=== Content Part ===-->
+<div class="container">		
+	<div class="row-fluid">
+		<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => "log-page" }) do |f| %>
+			<h3>Change your password?</h3>
+		  <%= f.error_notification %>
+			<%= display_base_errors resource %>
+		  <%= f.hidden_field :reset_password_token %>
+
+		  <div><%= f.label :password, "New password" %>
+		  <%= f.password_field :password, :autofocus => true, required: true %></div>
+
+		  <div><%= f.label :password_confirmation, "Confirm new password" %>
+		  <%= f.password_field :password_confirmation, required: true %></div>
+
+		  <div><%= f.submit "Change my password", :class => "btn-u" %></div>
+			<%= render "devise/shared/links" %>
+		<% end %>
+	</div>
+</div>

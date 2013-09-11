@@ -1,0 +1,27 @@
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+	<div class="container">
+        <h1 class="color-green pull-left">Reset Password</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">Reset Password</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+<!--=== Content Part ===-->
+<div class="container">		
+	<div class="row-fluid">
+		<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "log-page form-vertical" }) do |f| %>
+			<h3>Forgot your password?</h3>
+		  <%= f.error_notification %>
+			<%= display_base_errors resource %>
+
+		  <%= f.input :email, :autofocus => true %>
+
+		  <div><%= f.submit "Send me reset password instructions", :class => "btn-u" %></div>
+		  <br>
+			<%= render "devise/shared/links" %>
+		<% end %>
+	</div>
+</div>

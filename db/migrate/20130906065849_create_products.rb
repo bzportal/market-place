@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration
     	t.integer	:session_length
     	t.attachment :cover
     	t.attachment :book_url
+      t.string  :description
     	
       t.timestamps
     end
