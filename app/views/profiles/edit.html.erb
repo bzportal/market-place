@@ -5,7 +5,7 @@
 			<!--Left Sidebar-->
 			<%= render partial: "shared/profile_sidebar" %>
 
-  		<div class="span9">
+  		<div class="span9" id="profile">
 				<h2>My Contractor Profile</h2>
 				<br>
 				<div class="alert alert-info">
@@ -57,7 +57,9 @@
 					<div class="alert alert-info">
 						<span style="font-size:16px;">Skills</span>
 						<span style="font-size:15px;" class="pull-right">
-							<a data-toggle="collapse" data-target="#add-skill"><i class="icon-edit"></i></a>
+							<a data-toggle="collapse" data-parent="#profile" href="#add-skill">
+								<i class="icon-pencil"></i>&nbsp;Add
+							</a>
 						</span>
 					</div>
 					<%= render :partial => "add_skills" %>
@@ -73,155 +75,116 @@
 					</div>
 				</div><!--/row-fluid-->
 				<br>
+
 				<!-- Experience Block  -->
 				<div class="row-fluid">
+					<div class="">
 						<div class="alert alert-info">
 							<span style="font-size:16px;">Professional Experience</span>
 							<span style="font-size:15px;" class="pull-right">
-								<a data-toggle="collapse" data-target="#add-professional-exp">
-									<i class="icon-edit"></i>
+								<a data-toggle="collapse" data-parent="#profile" href="#add-professional-exp">
+									<i class="icon-pencil"></i>&nbsp;Add
 								</a>
 							</span>
 						</div>
-            <%= render :partial => "add_professional_exp" %>
-						<div class="span12">
-							<table class="table table-bordered" id="pro_experience_list">
-								<thead>
-									<tr>
-										<th>From</th>
-										<th>To</th>
-										<th>Title / Role</th>
-										<th>Company Name</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<% pro_experiences = @profile.pro_experiences %>
-									<% pro_experiences.each do |s| %>
-									<tr id="pro_experience<%= s.id %>">
-										<td><%= s.from %></td>
-										<td><%= s.to %></td>
-										<td><%= s.title %></td>
-										<td><%= s.company_name %></td>
-										<td>
-											<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
-											<%= link_to('<i class="icon-trash"></i>'.html_safe, pro_experience_path(s), :data => { :confirm => "Are you sure?" }, remote: true, method: :delete, :class => 'btn') %>
-										</td>
-									</tr>
-									<% end %>
-									<tr id="pro-exp-template" style="display: none;">
-										<td id="from"></td>
-										<td id="to"></td>
-										<td id="title"></td>
-										<td id="company_name"></td>
-										<td id="action">
-											<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
-											<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true, :class => 'btn') %>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+						<%= render :partial => "add_professional_exp" %>
+					</div>
+					<div class="span12" id="pro_experience_list">
+						<% pro_experiences = @profile.pro_experiences %>
+						<% pro_experiences.each_with_index do |p, i| %>
+							<%= render :partial => "edit_professional_exp", :locals => {:pro_experience => p} %>
+							<div id="pro_experience<%= p.id %>">
+								<h5>
+									<strong><%= p.title %></strong> | <%= p.company_name %>
+									<a id="edit_link" data-toggle="collapse" data-parent="#profile" href="#professional-exp-<%= p.id%>">
+										<i class='icon-edit'></i>
+									</a>
+									<%= link_to('<i class="icon-trash"></i>'.html_safe, pro_experience_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
+								</h5>
+								<p><%= p.from + " - " + p.to %></p>
+								<p><%= p.description %></p>
+								<%= "<hr>".html_safe if i < pro_experiences.size - 1 %>
+							</div>
+						<% end %>
+						<div id="pro_experience_template" style="display: none">
+							<%= render :partial => "edit_professional_exp", :locals => {:pro_experience => ProExperience.new} %>
+							<hr>
+							<h5>
+								<span id="title"></span>
+								<span id="action">
+									<a id="edit_link" data-toggle="collapse" data-parent="#profile"><i class='icon-edit'></i></a>
+
+									<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
+								</span>
+							</h5>
+							<p id="term"></p>
+							<p id="description"></p>
 						</div>
+					</div>
 				</div><!--/row-fluid-->
 				<br>
 				<!-- Education Block  -->
 				<div class="row-fluid">
+					<div class="">
 						<div class="alert alert-info">
 							<span style="font-size:16px;">Education</span>
 							<span style="font-size:15px;" class="pull-right">
-								<a data-toggle="collapse" data-target="#add-education">
-									<i class="icon-edit"></i>
+								<a data-toggle="collapse" data-parent="#profile" href="#add-education">
+									<i class="icon-pencil"></i>&nbsp;Add
 								</a>
 							</span>
 						</div>
-            <%= render :partial => "add_education" %>
-						<div class="span12">
-							<table class="table table-bordered" id="education_list">
-								<thead>
-									<tr>
-										<th>From</th>
-										<th>To</th>
-										<th>School</th>
-										<th>Area of Study</th>
-										<th width="25%">Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<% educations = @profile.educations %>
-									<% educations.each do |s| %>
-									<tr id="education<%= s.id %>">
-										<td><%= s.from %></td>
-										<td><%= s.to %></td>
-										<td><%= s.school %></td>
-										<td><%= s.area_of_study %></td>
-										<td>
-											<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
-											<%= link_to('<i class="icon-trash"></i>'.html_safe, education_path(s), :data => { :confirm => "Are you sure?" }, remote: true, :method => :delete, :class => 'btn') %>
-										</td>
-									</tr>
-									<% end %>
-									<tr id="education-template" style="display: none;">
-										<td id="from"></td>
-										<td id="to"></td>
-										<td id="area_of_study"></td>
-										<td id="school"></td>
-										<td id="action">
-											<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
-											<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true, :class => 'btn') %>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+	          <%= render :partial => "add_education" %>
+	        </div>
+					<div class="span12" id="education_list">
+						<% educations = @profile.educations %>
+						<% educations.each_with_index do |e, i| %>
+						<div id="education<%= p.id %>">
+							<h5>
+								<strong><%= Education::DEGREES[e.degree] + ", " + e.area_of_study %></strong> | <%= e.school %>
+							</h5>
+							<p><%= e.from + " - " + e.to %></p>
+							<p><%= e.comments %></p>
+							<%= "<hr>".html_safe if i < educations.size - 1 %>
 						</div>
+						<% end %>
+					</div>
 				</div><!--/row-fluid-->
 				<br>
 				<!-- Other Experience Block  -->
 				<div class="row-fluid">
-					<div class="alert alert-info">
-						<span style="font-size:16px;">Other Experience</span>
-						<span style="font-size:15px;" class="pull-right">
-							<a data-toggle="collapse" data-target="#add-other-exp">
-								<i class="icon-edit"></i>
-							</a>
-						</span>
-					</div>
-          <%= render :partial => "add_other_exp" %>
-					<div class="span12">
-						<table class="table table-bordered" id="other_experience_list">
-							<thead>
-								<tr>
-									<th>Subject</th>
-									<th width="50%">Description</th>
-									<th width="25%">Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% other_experiences = @profile.other_experiences %>
-								<% other_experiences.each do |s| %>
-								<tr id="other_experience<%= s.id %>">
-									<td><%= s.name %></td>
-									<td><%= s.description %></td>
-									<td>
-										<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
-										<%= link_to('<i class="icon-trash"></i>'.html_safe, other_experience_path(s), :data => { :confirm => "Are you sure?" }, remote:true, :method => :delete, :class => 'btn') %>
-									</td>
-								</tr>
-								<% end %>
-								<tr id="other-exp-template" style="display: none;">
-									<td id="name"></td>
-									<td id="description"></td>
-									<td id="action">
-										<%= link_to "<i class='icon-edit'></i>".html_safe, '#', :class => 'btn' %>
-										<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true, :class => 'btn') %>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+					<div>
+						<div class="alert alert-info">
+							<span style="font-size:16px;">Other Experience</span>
+							<span style="font-size:15px;" class="pull-right">
+								<a data-toggle="collapse" data-parent="#profile" href="#add-other-exp">
+									<i class="icon-edit"></i>
+								</a>
+							</span>
+						</div>
+          	<%= render :partial => "add_other_exp" %>
+          </div>
+					<div class="span12" id="other_experience_list">
+						<% other_experiences = @profile.other_experiences %>
+						<% other_experiences.each_with_index do |p, i| %>
+						<div id="other_experience<%= p.id %>">
+							<h5>
+								<strong><%= p.name %></strong>
+								<a id="edit_link" data-toggle="collapse" data-parent="#profile" href="#other-experience-<%= p.id%>">
+									<i class='icon-edit'></i>
+								</a>
+								<%= link_to('<i class="icon-trash"></i>'.html_safe, other_experience_path(s), :data => { :confirm => "Are you sure?" }, remote:true, :method => :delete, :class => 'btn') %>
+							</h5>
+							<p><%= p.description %></p>
+							<%= "<hr>".html_safe if i < @profile.other_experiences.size - 1 %>
+						<% end %>
 					</div>
 				</div><!--/row-fluid-->
 			</div><!--/span9-->
   	</div><!--/row-fluid-->    
 	</div>
-
 </div><!--/container-->		
-<!--=== End Content Part ===
+<!--=== End Content Part ===-->
+<script type="text/javascript">
+$(".collapse").collapse('hide');
+</script>

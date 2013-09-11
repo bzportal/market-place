@@ -69,18 +69,18 @@ $(function(){
     if (xhr.status == 201) // create
     {
       pro_experience = xhr.responseJSON;
-      template = $("tr#pro-exp-template").clone();
+      template = $("#pro_experience_template").clone();
+      console.log(template);
 
       template.attr("id", "pro_experience" + pro_experience.id);
-      console.log(template.attr("id"));
-      template.find("td#from").html(pro_experience.from);
-      template.find("td#to").html(pro_experience.to);
-      template.find("td#company_name").html(pro_experience.company_name);
-      template.find("td#title").html(pro_experience.title);
-      template.find("td a[data-method='delete']").attr("href", "/pro_experiences/" + pro_experience.id);
+      
+      template.find("#title").html("<strong>" + pro_experience.title + "</strong> | " + pro_experience.company_name);
+      template.find("#action a[data-method='delete']").attr("href", "/pro_experiences/" + pro_experience.id);
+      template.find("#term").html(pro_experience.from + " ~ " + pro_experience.to);
+      template.find("#description").html(pro_experience.description);
 
-      template.css("display", "table-row");
-      $("#pro_experience_list tbody").append(template);
+      template.css("display", "block");
+      $("#pro_experience_list").append(template);
     }
   }).bind("ajax:error", function(e, xhr, status, error){
     var result = xhr.responseJSON;
@@ -91,13 +91,15 @@ $(function(){
   });
   // Delete
   $("#pro_experience_list").on("ajax:success", function(e, data, status, xhr){
-    console.log(xhr.responseJSON.id);
-    console.log($("tr#pro_experience" + xhr.responseJSON.id));
-    $("tr#pro_experience" + xhr.responseJSON.id).remove();
+    $("#pro_experience" + xhr.responseJSON.id).remove();
   });
 
+  $("#profile a[data-toggle='collapse']").on("click", function(){
+    $("#profile .collapse").collapse('hide');
 
-
+    var target = $(this).attr("href");
+    $(target).collapse('toggle');
+  });
 
   /* Skills */
   $("#new_skill").on("ajax:success", function(e, data, status, xhr)
@@ -124,7 +126,6 @@ $(function(){
   $("#skill_list").on("click", "li", function(event){
     $(this).remove();
   });
-
 
   /* profile image
   -----------------------------------------------------------------*/
@@ -180,5 +181,4 @@ $(function(){
   });
 
   $("#new_skill").validate();
-
 });

@@ -1,5 +1,5 @@
-<div id="add-other-exp" class="collapse">
-  <%= simple_form_for @other_experience, remote: true, :html => {:method => :post, :class => 'form-horizontal' } do |p| %>
+<div id="other-exp-<%= other_experience.id %>" class="collapse">
+  <%= simple_form_for other_experience, remote: true, :html => {:method => :put, :class => 'form-horizontal' } do |p| %>
     <div class="alert alert-danger hide">
       <span></span>
     </div>
@@ -13,7 +13,7 @@
     </div>
     <div class="controls form-inline">
       <%= p.submit "Add", :class => "btn btn-success" %>
-      <a class="btn" onclick="$('#add-other-exp').collapse('hide');">Cancel</a>
+      <a class="btn" onclick="$('#other-exp-<%= other_experience.id %>').collapse('hide');">Cancel</a>
     </div>
   <% end %>
 </div>

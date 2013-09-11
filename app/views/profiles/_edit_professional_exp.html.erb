@@ -1,0 +1,35 @@
+<div id="professional-exp-<%= pro_experience.id %>" class="collapse">
+  <%= simple_form_for pro_experience, remote: true, :html => {:method => :put, :class => 'form-horizontal' } do |p| %>
+    <div class="alert alert-danger hide">
+      <span></span>
+    </div>
+    <%= hidden_field_tag :profile_id, @profile.id %>
+    <%= p.input :title, autofocus: true %>
+    <%= p.input :company_name  %>
+    
+    <div class="control-group">
+      <%= p.label :from, 'From', :class => 'control-label' %>
+      <div class="controls">
+        <%= p.text_field :from, :class => 'date-picker' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= p.label :to, 'To', :class => 'control-label' %>
+      <div class="controls">
+        <%= p.text_field :to, :class => 'date-picker' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= p.label :descrption, 'Description', :class => 'control-label' %>
+      <div class="controls">
+        <%= p.text_area :description, :class => 'overview' %>
+      </div>
+    </div>
+    <div class="controls form-inline">
+      <%= p.submit "Add", :class => "btn btn-success" %>
+      <a class="btn" onclick="$('#professional-exp-<%= pro_experience.id %>').collapse('hide');">Cancel</a>
+    </div>
+  <% end %>
+</div>
