@@ -86,15 +86,16 @@
 
       <div class="span4" style="background-color: #f3f3f3; padding: 20px;">
         <!-- Prep Overview -->
-
-        <p class="text-center">
-          <a data-toggle="modal" data-target="#apply-form" class="btn btn-large <%= 'btn-success' if @applied.nil? %>">
-            <strong>Apply for this Prep</strong>
-          </a>
-          <% if @applied.nil? %>
-            <%= render :partial => "apply_form" %>
-          <% end %>
-        </p>
+        <% if current_user.roles.first.name == "prepper" %>
+          <p class="text-center">
+            <a data-toggle="modal" data-target="#apply-form" class="btn btn-large <%= 'btn-success' if @applied.nil? %>">
+              <strong>Apply for this Prep</strong>
+            </a>
+            <% if @applied.nil? %>
+              <%= render :partial => "apply_form" %>
+            <% end %>
+          </p>
+        <% end %>
         <br>
         <strong>Prep Overview</strong>
         <br>

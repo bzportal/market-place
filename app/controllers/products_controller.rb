@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-		@product = Product.find(params[:product])
+		@product = Product.find(params[:id])
 		if @product.update_attributes(params[:product])
     	redirect_to "/admin/pricing_management", notice: "New product is successfully updated."
     else

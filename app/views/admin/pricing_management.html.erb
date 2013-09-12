@@ -35,7 +35,8 @@
 									<td>$<%= p.price %>/min</td>
 									<td>
 									<td>
-						        <a data-toggle="collapse" class="btn">Edit</a>
+						        <a data-toggle="modal" href="#product-<%= p.id %>" class="btn">Edit</a>
+						        <%= render :partial => "edit_product", :locals => {:product => p} %>
 										<%= link_to("Delete", product_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn') %></td>
 									</td>
 								</tr>

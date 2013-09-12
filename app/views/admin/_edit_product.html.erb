@@ -1,10 +1,10 @@
-<div id="add-product" class="modal product_form" style="display: none;">
-  <%= simple_form_for :product, url: products_path, novalidate: false, html: {:method => :post, :class => 'form-horizontal' } do |p| %>
+<div id="product-<%= product.id %>" class="modal product_form" style="display: none">
+  <%= simple_form_for product, url: product_path(product), html: {:method => :put, :class => 'form-horizontal' } do |p| %>
     <div class="modal-header">
       <a class="close" data-dismiss="modal">&#215;</a>
-      <h3>Add new product</h3>
+      <h3>Edit product</h3>
     </div>
-    <div class="modal-body" style="height: 400px;">
+    <div class="modal-body">
       <%= p.input :name, autofocus: true %>
       <%= p.input :product_type, collection: Product::PRODUCT_TYPE.map.with_index{|m, i| [m, i]} %>
       <%= p.input :session_type, collection: Product::SESSION_TYPE.map.with_index{|m, i| [m, i]} %>
@@ -40,3 +40,16 @@
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+$("#product-<%= product.id %> form").validate({
+  rules: {
+    "product[price]": {
+      number: true
+    },
+    "product[session_length]": {
+      number: true
+    }
+  }
+});
+</script>

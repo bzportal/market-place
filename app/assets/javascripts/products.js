@@ -25,29 +25,30 @@ $(function(){
     }
   });
 
-  $('#product_product_type').on('change', function(input){
-    var index = $("#product_product_type option:selected").val();
+  $(".product_product_type select").on('change', function(input){
+
+    var index = $(this).find("option:selected").val();
 
     if (index == 0)
     {
       $('div.product_session_type').css("display", "block");
       $('div.product_session_length').css("display", "block");
-      $('#product-cover-div').css("display", "none");
-      $('#product-url-div').css("display", "none");
+      $('div.product_cover').css("display", "none");
+      $('div.product_url').css("display", "none");
     }
     else if (index == 1)
     {
       $('div.product_session_type').css("display", "none");
       $('div.product_session_length').css("display", "none");
-      $('#product-cover-div').css("display", "none");
-      $('#product-url-div').css("display", "none");
+      $('div.product_cover').css("display", "none");
+      $('div.product_url').css("display", "none");
     }
     else if (index == 2)
     {
       $('div.product_session_type').css("display", "none");
       $('div.product_session_length').css("display", "none");
-      $('#product-cover-div').css("display", "block");
-      $('#product-url-div').css("display", "block");
+      $('div.product_cover').css("display", "block");
+      $('div.product_url').css("display", "block");
     }
   });
 

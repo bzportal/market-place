@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20130910184558) do
     t.string   "book_url_content_type"
     t.integer  "book_url_file_size"
     t.datetime "book_url_updated_at"
+    t.string   "description"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end

@@ -29,7 +29,12 @@
 
           <%= label_tag :required_skills, "Skills / Specialization", :style => 'font-weight:bold' %>
           <%= f.input_field :required_skills, collection: SkillTag.all, :class => 'chzn-select', multiple: "" %>
-          
+
+          <% if params[:prep_type] == "resume" %>
+            <%= label_tag :attachment_url, "Upload Resume/Cover Letter file" %>
+            <%= f.file_field :attachment_url %>
+          <% end %>
+
           <%= f.input :title %>
           <%= f.input :description, as: :text %>
 
