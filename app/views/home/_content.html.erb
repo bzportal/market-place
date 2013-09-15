@@ -161,26 +161,16 @@
   <div class="headline"><h3>Online Books</h3></div>
   <div class="row-fluid margin-bottom-20">
     <!-- Who We Are -->
+    <% @guidebooks.each do |guide| %>
     <div class="span6">
-      <p><img class="pull-left lft-img-margin img-width-200" src="/assets/carousel/6.jpg" alt="" />
-        <div class="headline"><h4>Sleekgeek Finance Prep Guide</h4></div>
-        Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals. It works on all major web browsers, tablets and phone.</p> 
+      <p>
+        <%= image_tag guide.cover.url(:medium), :class => 'pull-left lft-img-margin img-width-200' %>
+        <div class="headline"><h4><%= guide.name %></h4></div>
+        <%= guide.description %>
+      </p>
 
-      <blockquote class="hero-unify">
-        <p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why. Unify is an incredibly beautiful responsive Bootstrap Template for corporate professionals.</p>
-        <small>CEO, Jack Bour</small>
-      </blockquote>
-    </div><!--/span8-->    
-    <div class="span6">
-      <p><img class="pull-left lft-img-margin img-width-200" src="/assets/carousel/6.jpg" alt="" />
-        <div class="headline"><h4>Sleekgeek Technology Prep Guide</h4></div>
-        Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals. It works on all major web browsers, tablets and phone.</p> 
-
-      <blockquote class="hero-unify">
-        <p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why. Unify is an incredibly beautiful responsive Bootstrap Template for corporate professionals.</p>
-        <small>CEO, Jack Bour</small>
-      </blockquote>
-    </div><!--/span8-->    
+    </div><!--/span6-->
+    <% end %>
   </div><!--/row-fluid--> 
   <!-- //End Information Blokcs -->
 </div><!--/container-->   

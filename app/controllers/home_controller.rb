@@ -13,5 +13,6 @@ class HomeController < ApplicationController
 	        redirect_to root_path
 	    end
 	  end
+	  @guidebooks = Product.find_all_by_product_type(2)
   end
 end
