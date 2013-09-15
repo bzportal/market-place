@@ -116,7 +116,7 @@
 		</div><!--/span8-->
 
   	<div class="span4" style="background-color: #f3f3f3; padding: 20px;">
-  		<% if current_user.roles.first.name == "preppee" %>
+  		<% if current_user.roles.first.name == "preppee" && @invitable_preps.present? %>
   		<p>
   			<strong>
 					<%= link_to 'Invite', "#add-contract", :class => 'btn btn-large btn-success text-center', :style => 'width: 80%', data: {toggle: "modal"} %>

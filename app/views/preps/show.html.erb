@@ -1,4 +1,3 @@
-<!--=== Content Part ===-->
 <div class="container">
   <br><br>
   <div class="span10" style="float: none !important; margin-left: auto; margin-right: auto;">
@@ -108,16 +107,31 @@
           </thead>
           <tbody>
             <tr>
-              <td>#Estimated hours for prep</td>
-              <td style="text-align: right;">40 mins</td>
+              <td>Industry</td>
+              <td style="text-align: right;"><%= get_job_name(@prep.job_type_id) %></td>
+            </tr>
+            <!-- Product Type -->
+            <% unless @product.nil? %>
+            <tr>
+              <td>Product</td>
+              <td style="text-align: right;"><%= @product.product_name %></td>
             </tr>
             <tr>
-              <td>#Due date</td>
-              <td style="text-align: right;">August 14, 2013</td>
+              <td>Session</td>
+              <td style="text-align: right;"><%= @product.session_name %></td>
+            </tr>
+            <tr>
+              <td>Price</td>
+              <td style="text-align: right;"><%= @product.price %></td>
+            </tr>
+            <% end %>
+            <tr>
+              <td>Due date</td>
+              <td style="text-align: right;">Contract.find_by_prep_id(</td>
             </tr>
           </tbody>
         </table>
       </div><!--/span4-->
-    </div><!--/row-fluid-->    
+    </div><!--/row-fluid-->
   </div>
-</div><!--/container-->   
+</div><!--/container

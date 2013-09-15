@@ -23,7 +23,7 @@
       <div class="control-group">
         <%= p.label :prep_id, 'Preps', :class => 'control-label' %>
         <div class="controls">
-          <%= select_tag :prep_id, options_for_select(current_user.preps.map{ |p| [p.title, p.id] }), required: true, prompt: "Please select..." %>
+          <%= select_tag :prep_id, options_for_select(@invitable_preps.map{ |p| [p.title, p.id] }), required: true, prompt: "Please select..." %>
         </div>
       </div>
 

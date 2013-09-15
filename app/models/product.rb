@@ -22,4 +22,12 @@ class Product < ActiveRecord::Base
   
   PRODUCT_TYPE = ["Interview Prep", "Review Document", "Guidebook"]
   SESSION_TYPE = ["Internship", "Fulltime Position", "Information Interview"]
+
+  def product_name
+    PRODUCT_TYPE[self.product_type]
+  end
+
+  def session_name
+    SESSION_TYPE[self.session_type]
+  end
 end

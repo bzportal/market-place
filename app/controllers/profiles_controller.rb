@@ -30,6 +30,10 @@ class ProfilesController < ApplicationController
 
 	def show
 		@profile = Profile.find_by_token(params[:id])
+		# retrieve all prep_applicants for preppee
+		prepper_id = @profile.user.id
+
+    @invitable_preps = current_user.preps.reject { |p| p.prep_applications.find_by_user_id prepper_id || p.status != "open" }
 	end
 
 	def update

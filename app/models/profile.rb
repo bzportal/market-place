@@ -23,6 +23,7 @@ class Profile < ActiveRecord::Base
   "4 - Fluent written skills, good verbal skills",
   "5 - Fluent in both written and verbal skills"
   ]
+
   protected
 
   def generate_token
