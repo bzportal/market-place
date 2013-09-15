@@ -166,7 +166,7 @@
       <p>
         <%= image_tag guide.cover.url(:medium), :class => 'pull-left lft-img-margin img-width-200' %>
         <div class="headline"><h4><%= guide.name %></h4></div>
-        <%= guide.description %>
+        <%= guide.description.gsub("\n", "<br>").html_safe %>
       </p>
 
     </div><!--/span6-->
