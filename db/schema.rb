@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910184558) do
+ActiveRecord::Schema.define(:version => 20130917220514) do
 
   create_table "contracts", :force => true do |t|
     t.integer  "prep_application_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20130910184558) do
     t.datetime "updated_at",                          :null => false
     t.integer  "prepper_id"
     t.integer  "preppee_id"
+    t.string   "session_id"
+    t.string   "token"
   end
 
   create_table "educations", :force => true do |t|
@@ -127,9 +129,9 @@ ActiveRecord::Schema.define(:version => 20130910184558) do
     t.string   "book_url_content_type"
     t.integer  "book_url_file_size"
     t.datetime "book_url_updated_at"
-    t.string   "description"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.string   "description",           :limit => 5000
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "profiles", :force => true do |t|

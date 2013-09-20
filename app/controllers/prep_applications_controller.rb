@@ -29,18 +29,20 @@ class PrepApplicationsController < ApplicationController
 
 
 	def confirmed
-		puts params.inspect
+
 		@application = PrepApplication.find_by_id!(params[:prep_application_id])
 		@application.status = "scheduled"
 
 		@application.prep.status = "scheduled"
-		puts @application.prep.save
+
+		create_interview_session(@application.contract)
+		@application.prep.save
 		
-		puts @application.save
+		@application.save
 
 		PrepMailer.confirmed(@application.prep.user, @application.prep).deliver
 
-		redirect_to "/prepper/scheduled"
+		redirect_to "/prepper/scheduled", notice: "Please visit /video_interview/party/" + @session.session_id.to_s + " for interview"
 	end
 
 	def decline
@@ -85,4 +87,21 @@ class PrepApplicationsController < ApplicationController
 			redirect_to "/422.html"
 		end
 	end
+
+	def create_interview_session(contract)
+		config_opentok
+
+		session_properties = {OpenTok::SessionPropertyConstants::P2P_PREFERENCE => "enabled"}
+    @session = @opentok.create_session nil, session_properties
+    contract.session_id = @session.session_id
+
+    contract.save
+	end
+
+  def config_opentok
+    if @opentok.nil?
+     @opentok = OpenTok::OpenTokSDK.new 22329432, "f03a315fc996dff095d697eb7949cbec1474c6ba"
+    end
+  end
+
 end

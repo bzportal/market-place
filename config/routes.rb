@@ -56,7 +56,7 @@ PrepSite::Application.routes.draw do
       get 'payment'
     end
   end
-
+  resources :video_interview
   resources :other_experiences, only: [:create, :destroy]
   resources :skills, only: [:create, :destroy]
   resources :pro_experiences, only: [:create, :destroy]
