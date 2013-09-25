@@ -397,8 +397,10 @@ blockquote:hover {
 .footer {
 	margin-top:40px;
 	padding:20px 10px;
-	background:#585f69;
-	color:#dadada;
+	background: none repeat scroll 0 0 #E0EFFC;
+  border-top: 1px solid #CBE1F4;
+  padding: 20px 0;
+	color:#1072BA;
 } 
 footer{
 	width: 100%;
@@ -416,15 +418,11 @@ footer{
 .footer p,
 .footer a {
 	font-size:14px;
-} 
-.footer p {
-	color:#dadada;
-} 
-.footer a {
-	color:#72c02c;
+	color:#1072BA;
+	cursor: default;
 }
 .footer a:hover {
-	color:#a8f85f;
+	color:#1072fA;
     -webkit-transition:all 0.4s ease-in-out;
     -moz-transition:all 0.4s ease-in-out;
     -o-transition:all 0.4s ease-in-out;
@@ -1607,8 +1605,43 @@ a.read-more:hover {
 	margin-bottom:60px;
 }
 
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+.margin-top-20 {
+	margin-top: 20px;
+}
+.margin-top-25 {
+	margin-top: 25px;
+}
+.margin-top-30 {
+	margin-top: 30px;
+}
+.margin-top-40 {
+	margin-top: 40px;
+}
+.margin-top-50 {
+	margin-top: 50px;
+}
+
 .top-2 {
 	top:2px;
+}
+.font-size-22 {
+	font-size: 22px;
+}
+.font-size-26 {
+	font-size: 26px;
+}
+.font-size-32 {
+	font-size: 32px;
+}
+.font-size-36 {
+	font-size: 36px;
+}
+.font-size-48 {
+	font-size: 48px;
 }
 
 /*Button Style*/
@@ -1707,7 +1740,7 @@ a.btn-u-large {
 	float:left;
 	display:inline;
 	list-style:none;
-	margin-right:5px;
+	margin-right:15px;
 	margin-bottom:5px;
 	text-indent:-9999px;
 }
@@ -1935,4 +1968,86 @@ dt, dd {
 .error
 {
 	color: #e00;
+}
+
+#banner-area
+{
+	*background: linear-gradient(to bottom, #4EC5F4 0%, #207CE5 100%) repeat scroll 0 0 transparent;
+	border-bottom: 2px solid #4496F1;
+  padding-bottom: 30px;
+}
+
+#banner-area h1
+{
+	font-size: 50px;
+	text-align: center;
+	color: #fefefe;
+}
+
+#process-section img
+{
+	width: 250px;
+	margin-bottom: 20px;
+}
+
+#process-section
+{
+	text-align: center;
+	margin-top: 50px;
+}
+
+#landing-page section
+{
+	margin: 40px auto;
+	float: none;
+}
+
+#landing-page section h2
+{
+	margin-bottom: 30px;
+}
+
+#landing-page .highlighted
+{
+	background-color: #3A66A6;
+}
+
+#landing-page .step{
+	padding: 40px 0px;
+}
+
+.highlighted h1,
+.highlighted h2,
+.highlighted h3,
+.highlighted h4,
+.highlighted h5
+{
+	color: white;
+}
+
+.clients
+{
+	margin-top: 0px;
+	background: none repeat scroll 0 0 #E0EFFC;
+
+}
+.clients li
+{
+	margin-right: 20px;
+	background: none repeat scroll 0 0 #E0EFFC;
+}
+
+.clearfix{
+	float:none;
+	clear:both;
+}
+
+#guides li {
+	margin-right: 20px;
+}
+
+
+#guides li img
+{
+	width: 120px;
 }

@@ -126,6 +126,7 @@
 	z-index:999;
 	position:relative;
 	border-bottom:solid 2px #eee;
+	background: url("/assets/sleekgk_header.jpg") repeat scroll center top #7EBBE8;
 }
 
 .header .container {
@@ -143,7 +144,7 @@
 .navbar-inner, 
 .nav,
 .navbar-inverse {
-	background:#fff;
+	background:none;
 	filter:none;
 	border:none;
 	padding:0;
@@ -151,6 +152,12 @@
 	-webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
+}
+.menu
+{
+	padding-top: 15px;
+	height: 70px;
+	background: none repeat scroll 0 0 rgba(9, 22, 33, 0.4) !important;
 }
 
 .nav i.icon-sort-up { 
@@ -171,12 +178,12 @@
 .navbar .nav > li > a {
 	display:block;
 	font-size:15px;
-	font-weight:400;
-	color: #687074;
+	font-weight:600;
+	color: #fefefe;
 	text-shadow:none;
 	padding:9px 20px;
 	text-transform:uppercase;
-	border-bottom:solid 2px #eee;
+	*border-bottom:solid 2px #eee;
 	font-family:'Open Sans', sans-serif;
     -webkit-transition:all 0.4s ease-in-out;
     -moz-transition:all 0.4s ease-in-out;
@@ -212,29 +219,30 @@
 .nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
 	margin:0 !important;
 	border-radius:0 !important;
+  font-size: 18px;
 }
 
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
   	color:#72c02c;
-	border-bottom:solid 2px #72c02c;
+	*border-bottom:solid 2px #72c02c;
 }
 
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:focus {
-  	color:#72c02c;	
-  	text-decoration:none;
-	border-bottom:solid 2px #72c02c;
-  	background:none;	
-  	-webkit-box-shadow:none;
-       -moz-box-shadow:none;
-          	box-shadow:none;
+  color:#72c02c;
+  text-decoration:none;
+	*border-bottom:solid 2px #72c02c;
+  background:none;	
+  -webkit-box-shadow:none;
+      -moz-box-shadow:none;
+         	box-shadow:none;
 }
 
 .navbar .nav > .active > a:hover {	
   	color:#72c02c;	
 	background:none;		
-	border-bottom:solid 2px #72c02c;
+	*border-bottom:solid 2px #72c02c;
   	-webkit-box-shadow:none;
        -moz-box-shadow:none;
           	box-shadow:none;

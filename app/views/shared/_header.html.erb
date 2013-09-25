@@ -1,46 +1,86 @@
 
 <!--=== Header ===-->
-<div class="header">         
-  <div class="container"> 
-    <!-- Logo -->     
-    <div class="logo">                       
-      <a href="#"><img id="logo-header" src="/assets/logo.png" alt="Sleekgeek"></a>
-    </div><!-- /logo -->    
+<div class="header">
+  <div class="menu">
+    <div class="container"> 
+      <!-- Logo -->
+      <div class="logo">                       
+        <h2>
+          <a href="#" style="font-weight: bolder; text-decoration:none;">
+            <span style="color: white;">SLEEKGEEK</span><span style="color: orange"> PREP</span>
+          </a>
+        </h2>
+      </div><!-- /logo -->    
 
-    <!-- Menu -->
-    <div class="navbar">
-      <div class="navbar-inner">                  
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a><!-- /nav-collapse -->
-        <div class="nav-collapse collapse">
-          <ul class="nav top-2">
-          <% if user_signed_in? %>
-            <% if current_user.has_role? :admin %>
-              <%= render "shared/admin_menu" %>
-            <% elsif current_user.has_role? :preppee %>
-              <%= render "shared/preppee_menu" %>
-            <% elsif current_user.has_role? :prepper %>
-              <%= render "shared/prepper_menu" %>
+      <!-- Menu -->
+      <div class="navbar">
+        <div class="navbar-inner">                  
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a><!-- /nav-collapse -->
+          <div class="nav-collapse collapse">
+            <ul class="nav top-2">
+            <% if user_signed_in? %>
+              <% if current_user.has_role? :admin %>
+                <%= render "shared/admin_menu" %>
+              <% elsif current_user.has_role? :preppee %>
+                <%= render "shared/preppee_menu" %>
+              <% elsif current_user.has_role? :prepper %>
+                <%= render "shared/prepper_menu" %>
+              <% end %>
+            <% else %>
+              <%= render "shared/landing_menu" %>
             <% end %>
-          <% else %>
-            <%= render "shared/landing_menu" %>
-          <% end %>
 
-          </ul>
-          <div class="search-open">
-            <div class="input-append">
-              <form>
-                <input type="text" class="span3" placeholder="Search" />
-                <button type="submit" class="btn-u">Go</button>
-              </form>
+            </ul>
+            <div class="search-open">
+              <div class="input-append">
+                <form>
+                  <input type="text" class="span3" placeholder="Search" />
+                  <button type="submit" class="btn-u">Go</button>
+                </form>
+              </div>
             </div>
-          </div>
-        </div><!-- /nav-collapse -->                
-      </div><!-- /navbar-inner -->
-    </div><!-- /navbar -->              
-  </div><!-- /container -->         
-</div><!--/header -->    
+          </div><!-- /nav-collapse -->                
+        </div><!-- /navbar-inner -->
+      </div><!-- /navbar -->
+
+    </div><!-- /container -->
+  </div>
+  <div id="banner-area">
+    <div class="container margin-top-30">
+      <h1> SLEEKGEEK PREP WORKS FOR YOU</h1>
+      <div class="row-fluid margin-top-40">
+        <div class="span6">
+          <br>
+          <h3 style="color:#fefefe">
+            Our unique prep marketplace brings industry experts and job seekers together to help preppees gain the competitive edge
+          </h3>
+          <br>
+          <p>
+            <a href="/select_user" class="btn btn-success btn-large">
+              <b>GET STARTED</b>
+              <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+          </p>
+        </div>
+        <div class="span6">
+          <iframe src="http://player.vimeo.com/video/47911018" width="100%" height="320" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+        </div>
+      </div>
+    </div><!-- /banner-area -->
+  </div>
+</div><!--/header -->
+<div class="clients">
+  <ul class="inline span11 center">
+    <li><img src="assets/clients/1.png"></li>
+    <li><img src="assets/clients/2.png"></li>
+    <li><img src="assets/clients/3.png"></li>
+    <li><img src="assets/clients/4.png"></li>
+    <li><img src="assets/clients/5.png"></li>
+    <li><img src="assets/clients/6.png"></li>
+  </ul>
+</div>
 <!--=== End Header ===-->
