@@ -5,4 +5,9 @@ module HomeHelper
 		end
 		return ""
 	end
+
+	def landing_page
+		return true if !user_signed_in? && params[:action] == "index"
+
+	end
 end

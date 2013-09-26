@@ -6,7 +6,7 @@
       <!-- Logo -->
       <div class="logo">                       
         <h2>
-          <a href="#" style="font-weight: bolder; text-decoration:none;">
+          <a href="/" style="font-weight: bolder; text-decoration:none;">
             <span style="color: white;">SLEEKGEEK</span><span style="color: orange"> PREP</span>
           </a>
         </h2>
@@ -49,6 +49,7 @@
 
     </div><!-- /container -->
   </div>
+  <% if landing_page %>
   <div id="banner-area">
     <div class="container margin-top-30">
       <h1> SLEEKGEEK PREP WORKS FOR YOU</h1>
@@ -67,20 +68,24 @@
           </p>
         </div>
         <div class="span6">
-          <iframe src="http://player.vimeo.com/video/47911018" width="100%" height="320" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+          <!-- <iframe src="http://player.vimeo.com/video/47911018" width="100%" height="320" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>  -->
         </div>
       </div>
-    </div><!-- /banner-area -->
-  </div>
+    </div>
+  </div><!-- /banner-area -->
+  <% end %>
 </div><!--/header -->
+
+<% if landing_page %>
 <div class="clients">
   <ul class="inline span11 center">
-    <li><img src="assets/clients/1.png"></li>
-    <li><img src="assets/clients/2.png"></li>
-    <li><img src="assets/clients/3.png"></li>
-    <li><img src="assets/clients/4.png"></li>
-    <li><img src="assets/clients/5.png"></li>
-    <li><img src="assets/clients/6.png"></li>
+    <li><img src="/assets/clients/1.png"></li>
+    <li><img src="/assets/clients/2.png"></li>
+    <li><img src="/assets/clients/3.png"></li>
+    <li><img src="/assets/clients/4.png"></li>
+    <li><img src="/assets/clients/5.png"></li>
+    <li><img src="/assets/clients/6.png"></li>
   </ul>
 </div>
+<% end %>
 <!--=== End Header ===-->
