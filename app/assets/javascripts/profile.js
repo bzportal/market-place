@@ -5,6 +5,7 @@ $(function(){
   $("#new_education").on("ajax:success", function(e, data, status, xhr)
   {
     $("#new_education .alert-danger").fadeOut('slow');
+    var degrees = ["Doctorate", "Master's", "Bachelor's", "Associate's", "Diploma", "High School"];
     if (xhr.status == 201) // create
     {
       education = xhr.responseJSON;
@@ -13,13 +14,14 @@ $(function(){
 
       template.attr("id", "education" + education.id);
       
-      template.find("#title").html("<strong>" + education.title + "</strong> | " + education.company_name);
-      
+      template.find("#title").html("<strong>" + education.school + ", " 
+        + degrees[education.degree] + "</strong> | " + education.area_of_study);
+
       template.find("#action a[data-method='delete']").attr("href", "/educations/" + education.id);
       template.find("#edit_link").attr("href", "#education-" + education.id);
       
       template.find("#term").html(education.from + " ~ " + education.to);
-      template.find("#description").html(education.description);
+      template.find("#description").html(education.comments);
       // form
       template.find("#education-").attr("id", "education-" + education.id);
       template.find("#education- form").attr("action", "/educations/" + education.id);
@@ -28,7 +30,7 @@ $(function(){
       template.find("#education_to").val(education.to);
       template.find("#education_area_of_study").val(education.area_of_study);
       template.find("#education_school").val(education.school);
-      template.find("#education_description").val(education.description);
+      template.find("#education_description").val(education.comments);
       
       template.css("display", "block");
 

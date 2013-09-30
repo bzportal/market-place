@@ -34,7 +34,7 @@
 		      Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals. It works on all major web browsers, tablets and phone.</h3> 
 		    </div>
 		  </div>
-		</section>  
+		</section>
 	</div>
 	<div class="">
 	  <section class="span11">
@@ -116,13 +116,7 @@
 	  <div class="clearfix"></div>
 	</div>
   <div class="row-fluid margin-bottom-20">
-    <% @guidebooks.each do |guide| %>
-<!--       <p>
-        <%= image_tag guide.cover.url(:medium), :class => 'pull-left lft-img-margin img-width-200' %>
-        <div class="headline"><h4><%= guide.name %></h4></div>
-        <%= guide.description.gsub("\n", "<br>").html_safe %>
-      </p> -->
-    <% end %>
+
   </div><!--/row-fluid-->
   <!-- //End Information Blokcs -->
 </div><!--/landing page-->   
@@ -131,6 +125,7 @@
 $(function(){
 	$('#guides').carouFredSel({
 					width: '100%',
+					height: '100%',
 					scroll : {
 	            items           : 1,
 	            duration        : 1000,

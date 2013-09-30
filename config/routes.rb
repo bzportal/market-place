@@ -1,6 +1,6 @@
 PrepSite::Application.routes.draw do
   get "select_user", to: "home#select_user"
-  
+
   authenticated :user do
     root :to => 'home#index'
   end
@@ -27,6 +27,7 @@ PrepSite::Application.routes.draw do
     collection do
       get 'open_request'
       get 'scheduled'
+      get 'welcome'
     end
   end
 
@@ -35,6 +36,7 @@ PrepSite::Application.routes.draw do
       get 'open_request'
       get 'confirmed'
       get 'scheduled'
+      get 'welcome'
     end
   end
   

@@ -10,7 +10,7 @@
 	<br>
 	<div class="row-fluid">
   	<div class="span7 center">
-  		<%= image_tag current_user.profile.photo.url(:medium) %>
+  		<%= image_tag current_user.profile.photo.url(:medium) unless current_user.profile.nil? %>
   	</div>
   </div>
   <h4 class="text-center"><a href="#"><%= current_user.fullname %></a></h4>

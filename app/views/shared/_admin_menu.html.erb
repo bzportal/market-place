@@ -1,18 +1,20 @@
-<li class="<%= active_menu_class('admin', :scheduled) %>">
-  <%= link_to 'Home', "/admin" %>
-</li>
-<li class="<%= active_menu_class('admin', :open_request) %>">
-	<%= link_to 'Open Requests', "/admin/open_request" %>
-</li>
-<li class="<%= active_menu_class('admin', :pricing_management) %>">
-	<%= link_to 'Pricing Management', "/admin/pricing_management" %>
-</li>
-<li class="<%= active_menu_class('admin', :session_recordings) %>">
-	<%= link_to 'Session Recordings', "/admin/session_recordings" %>
-</li>
-<li class="<%= active_menu_class('admin', :accounting) %>">
-	<%= link_to 'Accounting', "/admin/accounting" %>
-</li>
-<li class="<%= active_menu_class('admin', :settings) %>">
-	<%= link_to 'Settings', "/admin/settings" %>
-</li>
+<ul class="nav top-2">
+	<li class="<%= active_menu_class('admin', :scheduled) %>">
+	  <%= link_to 'Home', "/admin" %>
+	</li>
+	<li class="<%= active_menu_class('admin', :open_request) %>">
+		<%= link_to 'Open Requests', "/admin/open_request" %>
+	</li>
+	<li class="<%= active_menu_class('admin', :pricing_management) %>">
+		<%= link_to 'Products', "/admin/pricing_management" %>
+	</li>
+	<li class="<%= active_menu_class('admin', :session_recordings) %>">
+		<%= link_to 'Sessions', "/admin/session_recordings" %>
+	</li>
+	<li class="<%= active_menu_class('admin', :accounting) %>">
+		<%= link_to 'Accounting', "/admin/accounting" %>
+	</li>
+	<li class="<%= active_menu_class('admin', :settings) %>">
+		<%= link_to 'Settings', "/admin/settings" %>
+	</li>	
+</ul>

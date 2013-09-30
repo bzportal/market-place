@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="controls form-inline">
-      <%= p.submit "Add", :class => "btn btn-success" %>
+      <%= p.submit "Save", :class => "btn btn-success", :onclick => "$('#professional-exp-#{pro_experience.id}').collapse('hide');" %>
       <a class="btn" onclick="$('#professional-exp-<%= pro_experience.id %>').collapse('hide');">Cancel</a>
     </div>
   <% end %>

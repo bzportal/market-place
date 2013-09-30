@@ -7,7 +7,9 @@
 .loginbar {
 	margin:0;
 	padding:0;
+	margin-top: 10px;
 	z-index:9999;
+	color: white;
 	list-style:none;
 	position:relative;
 }
@@ -219,7 +221,7 @@
 .nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
 	margin:0 !important;
 	border-radius:0 !important;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .navbar .nav > li > a:focus,

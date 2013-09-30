@@ -1,12 +1,11 @@
-<li class="<%= active_menu_class('prepper', :scheduled) %>">
-  <%= link_to 'Scheduled Preps', "/prepper/scheduled" %>
-</li>
-<li class="<%= active_menu_class('prepper', :confirmed) %>">
-  <%= link_to 'Confirmed Preps to be scheduled', "/prepper/confirmed" %>
-</li>
-<li class="<%= active_menu_class('prepper', :open_request) %>">
-  <%= link_to 'Browse Open Requests', '/prepper/open_request' %>
-</li>
-<li>
-  <a href="" class="dropdown-toggle" data-toggle="dropdown">Your Feedback</a>
-</li>
+<ul class="nav top-2">
+	<li class="<%= active_menu_class('prepper', :scheduled) %>">
+	  <%= link_to 'Scheduled Preps', "/prepper/scheduled" %>
+	</li>
+	<li class="<%= active_menu_class('prepper', :confirmed) %>">
+	  <%= link_to 'Preps to be confirmed', "/prepper/confirmed" %>
+	</li>
+	<li class="<%= active_menu_class('prepper', :open_request) %>">
+	  <%= link_to 'Open Requests', '/prepper/open_request' %>
+	</li>
+</ul>

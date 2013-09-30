@@ -1,19 +1,38 @@
 <div class="container"> 
   <!-- Information Blokcs -->
-  <div class="span5" style="margin:150px auto 100px auto; float:none;">
-	  <div class="row-fluid">
-	  	<div class="span5 pull-left text-center">
-	  		<a href="<%= new_user_registration_path(:plan => 'preppee') %>">
-	  			<img class="img-rounded" src='/assets/user/preppee_avatar.jpg' >
-	  			<h3>Preppee</h3>
-	  		</a>
-	  	</div>
-	  	<div class="span5 pull-right text-center">
-	  		<a href="<%= new_user_registration_path(:plan => 'prepper') %>">
-	  			<img class="img-rounded" src='/assets/user/prepper_avatar.jpg' >
-	  			<h3>Prepper</h3>
-	  		</a>
-	  	</div>
-	  </div>
+  <div class="span9 center select-user">
+  	<h3 class="color-black">Let's get started</h3>
+  	<h4>First Tell us what you are looking for</h4>
+  	<div class="select-user-inner">
+		  <div class="row-fluid">
+		  	<div class="span6 pull-left">
+		  		<div class="row-fluid">
+		  			<div class="span5">
+				  		<a href="<%= new_user_registration_path(:plan => 'preppee') %>">
+				  			<img class="img-circle" src='/assets/landing/process1.jpg' >
+				  		</a>
+				  	</div>
+				  	<div class="span7">
+				  		<h4 class="color-black"><b>I need prep </b></h4>
+				  		<p>Request interview prep, informational interviews, and cover letter and resume critique on demand.</p>
+				  		<p><%= link_to "Request Prep", new_user_registration_path(:plan => 'preppee'), :class => 'btn-u btn-success' %></p>
+				  	</div>
+			  	</div>
+		  	</div>
+		  	<div class="span6 pull-right">
+		  		<div class="row-fluid">
+		  			<div class="span5">
+			  			<img class="img-circle" src='/assets/landing/process2.jpg' >
+				  	</div>
+				  	<div class="span7">
+				  		<h4 class="color-black"><b>I want to help!</b></h4>
+				  		<p>Earn money helping jobseekers gain a competitive edge.</p>
+				  		<br><br>
+				  		<p><%= link_to "Sign up to Prep", new_user_registration_path(:plan => 'prepper'), :class => 'btn-u btn-success' %></p>
+				  	</div>
+				  </div>
+		  	</div>
+		  </div>
+		</div>
 	</div>
 </div>

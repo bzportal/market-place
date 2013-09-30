@@ -10,9 +10,17 @@ class ApplicationController < ActionController::Base
       when 'admin'
         "/admin/open_request"
       when 'preppee'
-        "/preppee/open_request"
+        if params[:confirmation_token]
+          "/preppee/welcome"
+        else
+          "/preppee/open_request"
+        end
       when 'prepper'
-        "/prepper/open_request"
+        if params[:confirmation_token]
+          "/prepper/welcome"
+        else
+          "/prepper/open_request"
+        end
       else
         root_path
     end

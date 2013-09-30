@@ -1060,6 +1060,7 @@ footer{
 	box-shadow:0 0 7px #eee;
 }
 
+
 /*404 Page
 ------------------------------------*/
 .page-404 p {
@@ -1500,6 +1501,7 @@ ul.inline li{
 .color-red { color:#c00;}
 .color-green { color:#72c02c;}
 .color-blue { color:#3498db;}
+.color-black { color:#333;}
 
 .pull-lft { text-align:left;}
 .pull-rgt { text-align:right;}
@@ -2051,4 +2053,32 @@ dt, dd {
 #guides li img
 {
 	width: 120px;
+}
+
+.select-user
+{
+	padding: 30px 40px;
+	margin-top: 30px !important;
+	border: 1px solid #ccc;
+}
+
+.select-user-inner
+{
+	padding: 40px 100px;
+}
+
+.btn-complete-profile
+{
+	background: -moz-linear-gradient(center top , #B2FF4A 0px, #6BDE2D 7%, #43B81A 75%, #3BB118 100%) repeat scroll 0 0 #7ADA4A;
+	font-size: 18px;
+	font-weight: bold;
+	padding:12px 24px;
+	margin-bottom: 50px;
+	background-position: 0px 0px !important;
+}
+
+#profile-photo p
+{
+	margin-bottom: 5px;
+	line-height: 14px;
 }

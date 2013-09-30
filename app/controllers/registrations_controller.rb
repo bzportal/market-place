@@ -25,9 +25,9 @@ class RegistrationsController < Devise::RegistrationsController
       when 'admin'
         "/admin/open_request"
       when 'preppee'
-        new_profile_path
+        "home#welcome"
       when 'prepper'
-        new_profile_path
+        "home#welcome"
       else
         root_path
     end

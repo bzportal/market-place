@@ -1,0 +1,32 @@
+<div class="container">
+	<br><br>
+	<div class="row">
+		<div class="span8">
+			<%= link_to "Complete your profile", new_profile_path, :class => "btn btn-complete-profile", style: "width: 90%" %>
+			<br>
+			<center>
+				<h4><a>Learn to create your profile</a></h4>
+				<img src="/assets/welcome_bk.png">
+			</center>
+		</div>
+		<div class="span3">
+			<div style="background-color: #ccc; margin:0; padding: 7px;">
+				<b style="font-size:18px;"><center>My Profile Completeness<center></b>
+			</div>
+			<div style="padding: 10px">
+				<img src="/assets/blank_user.jpg" class="pull-left" style="width: 100px; margin-right: 10px">
+				<br>
+				<div class="progress pull-left" data-percent="<%= completeness %>%" style="width: 120px;">
+					<div class="bar" style="width:<%= completeness %>%">
+					</div>
+				</div>
+			</div>
+		</div>
+		<a data-toggle="modal" data-target="#profile-overview" class="hide" id="profile"></a>
+		<%= render "shared/verified"%>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#verified-modal").modal("show");
+	console.log($("#verified-modal"));
+</script>

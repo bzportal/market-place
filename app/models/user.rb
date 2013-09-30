@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable# , :confirmable, :token_authenticatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
@@ -12,8 +12,17 @@ class User < ActiveRecord::Base
   
   has_one :profile
   has_many :preps
+  before_create :generate_token
 
   def fullname
     fullname = first_name + " " + last_name
+  end
+
+  protected
+
+  def generate_token
+    profile = Profile.new
+    profile.user_id = self.id
+    profile.save
   end
 end

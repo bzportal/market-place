@@ -7,7 +7,7 @@
       <div class="logo">                       
         <h2>
           <a href="/" style="font-weight: bolder; text-decoration:none;">
-            <span style="color: white;">SLEEKGEEK</span><span style="color: orange"> PREP</span>
+            <span style="color: white;">sleekgeek</span><span style="color: orange"> prep</span>
           </a>
         </h2>
       </div><!-- /logo -->    
@@ -21,20 +21,31 @@
             <span class="icon-bar"></span>
           </a><!-- /nav-collapse -->
           <div class="nav-collapse collapse">
-            <ul class="nav top-2">
-            <% if user_signed_in? %>
-              <% if current_user.has_role? :admin %>
-                <%= render "shared/admin_menu" %>
-              <% elsif current_user.has_role? :preppee %>
-                <%= render "shared/preppee_menu" %>
-              <% elsif current_user.has_role? :prepper %>
-                <%= render "shared/prepper_menu" %>
-              <% end %>
-            <% else %>
+            <% if landing_page %>
               <%= render "shared/landing_menu" %>
+            <% else %>
+              <% if user_signed_in? %>
+                <% if current_user.has_role? :admin %>
+                  <%= render "shared/admin_menu" %>
+                <% elsif current_user.has_role? :preppee %>
+                  <%= render "shared/preppee_menu" %>
+                <% elsif current_user.has_role? :prepper %>
+                  <%= render "shared/prepper_menu" %>
+                <% end %>
+                <ul class="nav top-2">
+                  <li>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%= current_user.fullname %>
+                      <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to '<i class="icon-user"></i> Edit Profile'.html_safe, edit_user_registration_path %></li>
+                      <li><%= link_to '<i class="icon-signout"></i> Logout'.html_safe, destroy_user_session_path, :method=>'delete' %></li>
+                    </ul>
+                    <b class="caret-out"></b>
+                  </li>
+                </ul>
+              <% end %>
             <% end %>
-
-            </ul>
             <div class="search-open">
               <div class="input-append">
                 <form>
@@ -49,7 +60,7 @@
 
     </div><!-- /container -->
   </div>
-  <% if landing_page %>
+  <% if landing_page && !signup_page%>
   <div id="banner-area">
     <div class="container margin-top-30">
       <h1> SLEEKGEEK PREP WORKS FOR YOU</h1>
@@ -76,7 +87,7 @@
   <% end %>
 </div><!--/header -->
 
-<% if landing_page %>
+<% if landing_page && !signup_page%>
 <div class="clients">
   <ul class="inline span11 center">
     <li><img src="/assets/clients/1.png"></li>

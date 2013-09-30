@@ -38,7 +38,7 @@
             </dd>
             <dt>Personal Email</dt>
             <dd><%= current_user.email %></dd>
-            <dt>Years of experience</dt>
+            <dt>Years of Professional Experience</dt>
             <dd><%= @profile.year_of_experience %></dd>
             <!-- <dt>English</dt>
             <dd><%#= @profile.english_skill %></dd> -->
@@ -123,6 +123,9 @@
 					</div>
 				</div><!--/row-fluid-->
 				<br>
+
+
+
 				<!-- Education Block  -->
 				<div class="row-fluid">
 					<div class="">
@@ -139,17 +142,22 @@
 					<div class="span12" id="education_list">
 						<% educations = @profile.educations %>
 						<% educations.each_with_index do |e, i| %>
-						<div id="education<%= p.id %>">
-							<h5>
-								<strong><%= Education::DEGREES[e.degree] + ", " + e.area_of_study %></strong> | <%= e.school %>
-							</h5>
-							<p><%= e.from + " - " + e.to %></p>
-							<p><%= e.comments %></p>
-							<%= "<hr>".html_safe if i < educations.size - 1 %>
-						</div>
+							<%= render :partial => "edit_education", :locals => {:education => e} %>
+							<div id="education<%= e.id %>">
+								<h5>
+									<strong><%= Education::DEGREES[e.degree] + ", " + e.area_of_study %></strong> | <%= e.school %>
+									<a id="edit_link" data-toggle="collapse" href="#education-<%= e.id%>">
+											<i class='icon-edit'></i>
+										</a>
+										<%= link_to('<i class="icon-trash"></i>'.html_safe, education_path(e), :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
+								</h5>
+								<p><%= e.from + " - " + e.to %></p>
+								<p><%= e.comments %></p>
+								<%= "<hr>".html_safe if i < educations.size - 1 %>
+							</div>
 						<% end %>
 						<div id="education_template" style="display: none">
-							<%= render :partial => "edit_professional_exp", :locals => {:education => ProExperience.new} %>
+							<%= render :partial => "edit_education", :locals => {:education => Education.new} %>
 							<hr>
 							<h5>
 								<span id="title"></span>
@@ -164,36 +172,7 @@
 						</div>
 					</div>
 				</div><!--/row-fluid-->
-				<br>
-				<!-- Other Experience Block  -->
-				<div class="row-fluid">
-					<div>
-						<div class="alert alert-info">
-							<span style="font-size:16px;">Other Experience</span>
-							<span style="font-size:15px;" class="pull-right">
-								<a data-toggle="collapse" href="#add-other-exp">
-									<i class="icon-pencil"></i>&nbsp;Add
-								</a>
-							</span>
-						</div>
-          	<%= render :partial => "add_other_exp" %>
-          </div>
-					<div class="span12" id="other_experience_list">
-						<% other_experiences = @profile.other_experiences %>
-						<% other_experiences.each_with_index do |p, i| %>
-						<div id="other_experience<%= p.id %>">
-							<h5>
-								<strong><%= p.name %></strong>
-								<a id="edit_link" data-toggle="collapse" href="#other-experience-<%= p.id%>">
-									<i class='icon-edit'></i>
-								</a>
-								<%= link_to('<i class="icon-trash"></i>'.html_safe, other_experience_path(s), :data => { :confirm => "Are you sure?" }, remote:true, :method => :delete, :class => 'btn') %>
-							</h5>
-							<p><%= p.description %></p>
-							<%= "<hr>".html_safe if i < @profile.other_experiences.size - 1 %>
-						<% end %>
-					</div>
-				</div><!--/row-fluid-->
+
 			</div><!--/span9-->
   	</div><!--/row-fluid-->    
 	</div>

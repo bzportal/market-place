@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'paperclip'
 gem 'paperclip-dropbox'
 gem 'opentok'
+gem 'country_select'
 
 group :development do
   gem 'sqlite3'

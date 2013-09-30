@@ -24,6 +24,17 @@ class Profile < ActiveRecord::Base
   "5 - Fluent in both written and verbal skills"
   ]
 
+  def completeness
+    percent = 0
+
+    percent += 30 unless self.photo.nil?
+    percent += 20 unless self.educations.nil?
+    percent += 20 unless self.skills.nil?
+    percent += 20 unless self.pro_experiences.nil?
+
+    return percent
+  end
+
   protected
 
   def generate_token
