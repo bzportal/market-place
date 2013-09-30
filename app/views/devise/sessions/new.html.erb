@@ -26,8 +26,8 @@
 	  <div class="controls form-inline">
 	  	<%= f.input :remember_me, :as => :boolean, :label => false, :inline_label => true if devise_mapping.rememberable? %>
       <%= f.button :submit, "Sign in", :class => 'btn-u pull-right' %>
-      <%= render "devise/shared/links" %>
     </div>
+    <%= render "devise/shared/links" %>
    <% end %>
   </div><!--/row-fluid-->
 </div><!--/container-->		
