@@ -79,7 +79,7 @@ PrepSite::Application.configure do
     :password  => ENV["MANDRILL_API_KEY"]
   }
 
-  config.action_mailer.default_url_options = { :host => 'sleekgeekprep.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'sleekgeek-prep.herokuapp.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
