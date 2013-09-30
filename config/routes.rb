@@ -1,5 +1,6 @@
 PrepSite::Application.routes.draw do
   get "select_user", to: "home#select_user"
+  get "verify_by_email", to: "home#verify_by_email"
 
   authenticated :user do
     root :to => 'home#index'

@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   
   has_one :profile
   has_many :preps
-  before_create :generate_token
+  
+  after_create :create_profile
 
   def fullname
     fullname = first_name + " " + last_name
@@ -20,7 +21,7 @@ class User < ActiveRecord::Base
 
   protected
 
-  def generate_token
+  def create_profile
     profile = Profile.new
     profile.user_id = self.id
     profile.save

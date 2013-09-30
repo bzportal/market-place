@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="span8">
 		<div id="new-profile" class="row-fluid">
-			<%= simple_form_for :profile, :url => profiles_path, :html => {:method => :post, :class => 'form-horizontal' } do |p| %>
+			<%= simple_form_for :profile, :url => profile_path(current_user.profile), :html => {:method => :put, :class => 'form-horizontal' } do |p| %>
 				<h3 class="color-black">Create your contractor profile</h3>
 				<br>
 				<p>Create your contractor profile so we can show you the best-matching preps</p>

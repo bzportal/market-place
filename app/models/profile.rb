@@ -27,10 +27,10 @@ class Profile < ActiveRecord::Base
   def completeness
     percent = 0
 
-    percent += 30 unless self.photo.nil?
-    percent += 20 unless self.educations.nil?
-    percent += 20 unless self.skills.nil?
-    percent += 20 unless self.pro_experiences.nil?
+    percent += 30 unless self.photo.url == ""
+    percent += 30 if self.educations.exists?
+    percent += 20 if self.skills.exists?
+    percent += 20 if self.pro_experiences.exists?
 
     return percent
   end

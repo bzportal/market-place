@@ -33,6 +33,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_inactive_sign_up_path_for(resource)
+    "/verify_by_email"
+  end
+
   private
   def build_resource(*args)
     super
