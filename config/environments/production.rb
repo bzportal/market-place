@@ -75,8 +75,8 @@ PrepSite::Application.configure do
     :port      => 587,
     :authentication => "plain",
     :enable_starttls_auto => true,
-    :user_name => ENV["MANDRILL_USERNAME"],
-    :password  => ENV["MANDRILL_API_KEY"]
+    :user_name => "admin@sleekgk.com",
+    :password  => "ay56Vt_YZG_oNAVrrggwcA"
   }
 
   config.action_mailer.default_url_options = { :host => 'sleekgeek-prep.herokuapp.com' }

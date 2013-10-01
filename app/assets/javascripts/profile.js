@@ -137,14 +137,14 @@ $(function(){
   });
 
 
-
-
   $("#profile a[data-toggle='collapse']").on("click", function(){
     $("#profile .collapse").collapse('hide');
 
     var target = $(this).attr("href");
     $(target).collapse('toggle');
   });
+
+
 
   /* Skills */
   $("#new_skill").on("ajax:success", function(e, data, status, xhr)
@@ -199,7 +199,8 @@ $(function(){
   $('.input-mask-date').mask('99/99/9999');
   $('.input-mask-time').mask('99/99/9999 99:99');
 
-  $('.date-picker').datepicker({ format: 'yyyy-mm-dd' });
+  if ($('.date-picker').length > 0)
+    $('.date-picker').datepicker({ format: 'yyyy-mm-dd' });
 
   jQuery.validator.addMethod("greaterThan", 
     function(value, element, params) {

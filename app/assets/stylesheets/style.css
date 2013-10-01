@@ -2070,6 +2070,9 @@ dt, dd {
 .btn-complete-profile
 {
 	background: -moz-linear-gradient(center top , #B2FF4A 0px, #6BDE2D 7%, #43B81A 75%, #3BB118 100%) repeat scroll 0 0 #7ADA4A;
+	background: #93dd64 -webkit-linear-gradient(top,#93dd64,#72d239 50%,#6fcc37);
+	background: #93dd64 -o-linear-gradient(top,#93dd64,#72d239 50%,#6fcc37);
+	background: #93dd64 linear-gradient(top,#93dd64,#72d239 50%,#6fcc37);
 	font-size: 18px;
 	font-weight: bold;
 	padding:12px 24px;
