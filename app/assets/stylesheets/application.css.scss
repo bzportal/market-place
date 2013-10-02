@@ -10,10 +10,9 @@
  *
  *= require bootstrap
  *= require bootstrap-responsive
- *= require_self
  *= require headers/header1
  *= require style
  *= require style_responsive
  *= require custom
- *= require font-awesome.min
+ *= require_self
  */
