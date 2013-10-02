@@ -163,13 +163,19 @@
        -moz-box-shadow: none;
             box-shadow: none;
 }
-.menu
+.header .menu
 {
 	padding-top: 15px;
 	height: 70px;
 	background: none repeat scroll 0 0 rgba(9, 22, 33, 0.4) !important;
 }
 
+.dark-header .menu
+{
+	padding-top: 15px;
+	height: 50px;
+	background: none repeat scroll 0 0 rgba(9, 22, 33, 0.4) !important;
+}
 .nav i.icon-sort-up { 
 	position:absolute; 
 	font-size:13px;
