@@ -197,6 +197,7 @@ $(function(){
 
   $.mask.definitions['~']='[+-]';
   $('.input-mask-date').mask('99/99/9999');
+  $('#profile_phone').mask('(999) 999-9999')
   $('.input-mask-time').mask('99/99/9999 99:99');
 
   if ($('.date-picker').length > 0)

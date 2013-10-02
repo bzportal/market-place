@@ -11,18 +11,22 @@ Website: http://htmlstream.com/preview/unify
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 * {
-	border-radius: 3px 3px;
+	border-radius: 0px 0px !important;
 }
 
-div {
-	border-radius: 3px 3px !important;
+html
+{
+	height: 100%;
 }
+
 body { 
-    padding:0;
+  padding:0;
 	color:#333; 
-    font-size:13px;
-    line-height:1.6;
+  font-size:12px;
+  line-height:1.6;
 	background:#fff;
+	height: 100%;
+	margin: 0;
 }
 
 p, li { 
@@ -393,6 +397,16 @@ blockquote:hover {
 	border-radius:0 !important;
 }
 
+#container
+{
+	min-height: 100%;
+	position: relative;;
+}
+
+#wrapper
+{
+	padding-bottom: 150px;
+}
 /*Footer*/
 .footer {
 	margin-top:40px;
@@ -402,10 +416,10 @@ blockquote:hover {
   padding: 20px 0;
 	color:#1072BA;
 } 
-footer{
+#footer{
 	width: 100%;
 	bottom: 0px;
-	position: relative;
+	position: absolute;
 }
 .footer h1, 
 .footer h2, 
@@ -1934,7 +1948,7 @@ i.style-switcher-btn-option:hover {
 	padding: 20px;
 }
 .table-condensed td {
-	padding: 10px 0;
+	padding: 7px 0;
 }
 
 dt, dd {
@@ -2079,9 +2093,23 @@ dt, dd {
 	margin-bottom: 50px;
 	background-position: 0px 0px !important;
 }
-
+#profile
+{
+	border: 1px solid #ccc;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 5px 5px 5px #888888;
+}
+#profile-photo
+{
+	margin-left: 10px;
+}
 #profile-photo p
 {
 	margin-bottom: 5px;
 	line-height: 14px;
+}
+#photo
+{
+	width: 120px;
 }

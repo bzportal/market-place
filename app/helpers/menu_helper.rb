@@ -9,4 +9,11 @@ module MenuHelper
 		end
 	end
 
+	def header_class
+		if landing_page
+			return "header"
+		else
+			return "dark-header"
+		end
+	end
 end

@@ -131,7 +131,15 @@
 	background: url("/assets/sleekgk_header.jpg") repeat scroll center top #7EBBE8;
 }
 
-.header .container {
+.dark-header
+{
+	z-index:999;
+	position:relative;
+	border-bottom:solid 2px #eee;
+	background-color: black;
+}
+
+.header .container, .dark-header .container {
 	position:relative;
 }
 
@@ -253,8 +261,8 @@
 /*Arrow for menu*/
 .navbar .nav > li > a .caret {
   margin:9px 0 0 3px !important;	
-  border-top-color: #72c02c!important;	
-  border-bottom-color: #72c02c !important;
+  border-top-color: white!important;	
+  border-bottom-color: white !important;
 }
 
 /*Dropdown Menu*/
@@ -263,23 +271,22 @@
 	border:none;
 	margin-top:-2px; 
 	min-width:200px;
-	border-radius:0; 
-	border-top:solid 2px #72c02c; 
-	border-bottom:solid 2px #687074; 
+	border:solid 1px white; 
+
 	z-index: 9999 !important;
 }
 .dropdown-menu li a { 
-	color:#687074; 
+	color: white; 
+	background-color: black;
 	font-size:13px; 
 	font-weight:400; 
 	padding:6px 15px; 
-	border-bottom:solid 1px #eee;
 }
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus,
 .dropdown-submenu:hover > a {
-  color:#ffffff;
-  background:#687074 !important;
+  color:black;
+  background:white !important;
     -webkit-transition:all 0.2s ease-in-out;
     -moz-transition:all 0.2s ease-in-out;
     -o-transition:all 0.2s ease-in-out;
@@ -318,8 +325,8 @@
 }
 .navbar .nav > li > .dropdown-menu:after {
 	left:19px;
-	border-top-color: #72c02c !important;
-	border-bottom-color: #72c02c !important;
+	*border-top-color: #72c02c !important;
+	*border-bottom-color: #72c02c !important;
 }
 
 /*Serach*/

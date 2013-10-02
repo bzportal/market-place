@@ -1,0 +1,52 @@
+label, input, button, select, textarea
+{
+	font-size: 13px !important;
+}
+
+.form-horizontal .control-group
+{
+	margin-bottom: 17px;
+}
+
+.profile-img-wrapper {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+    border: 1px solid #999;
+}
+.profile-img-wrapper * {
+    vertical-align: middle;
+}
+
+input[type="button"].btn, input[type="submit"].btn
+{
+	padding: 5px 12px;
+}
+
+.profile-section-title
+{
+	font-size: 16px;
+	font-weight: bold;
+	color: black;
+}
+.profile-section
+{
+	margin-bottom: 15px;
+}
+
+.dl-horizontal dt
+{
+  white-space: normal;
+}
+
+.white-background
+{
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 20px;
+	box-shadow: 5px 5px 5px #888888;
+	
+}

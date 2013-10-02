@@ -1,17 +1,16 @@
 <div class="container">
 	<br>
-	<div class="span11" style="float: none !important; margin-left: auto; margin-right: auto;">
+	<div class="span10 center">
 		<div class="row-fluid" id="prepper-profile">
-			<!--Left Sidebar-->
-			<%= render partial: "shared/profile_sidebar" %>
-
   		<div class="span9" id="profile">
 				<h2>My Contractor Profile</h2>
 				<br>
-				<div class="alert alert-info">
-					<span style="font-size:16px;">My Account Summary</span>
+				<div class="profile-section">
+					<span class="profile-section-title">My Account Summary</span>
 					<span style="font-size:15px;" class="pull-right">
-						<a data-toggle="modal" data-target="#profile-overview"><i class="icon-edit"></i></a>
+						<a data-toggle="modal" data-target="#profile-overview">
+							<i class="icon-edit"></i><b>&nbsp;Edit Summary</b>
+						</a>
 					</span>
 	        <%= render :partial => "edit_overview" %>
 				</div>
@@ -23,12 +22,15 @@
             <dt>Portrait</dt>
             <dd>
             	<div class="row-fluid">
-              	<div class="span3">
-              		<%= image_tag @profile.photo.url(:medium), id: "photo" %>
-              	</div>
+              	<div class="pull-left">
+				        	<div class="profile-img-wrapper">
+				          	<%= image_tag @profile.photo.url(:medium), id: "photo" %>
+				          </div>
+				        </div>
               	<div class="span5">
-              		<p>Draw in a new photo, or as:</p>
-              		<a style="color: #0093f0;" id="profile_photo_link">Edit Photo</a>
+              		<br>
+              		<p>Add a new photo, or as:</p>
+              		<a style="color: #0093f0;" id="profile_photo_link">Edit / Upload Photo</a>
               		<!-- <a style="color: #0093f0;">Delete Photo</a> -->
               	</div>
               	<%= form_for :profile, url: profile_path(@profile), html: { method: "put", id: "photo_form" } do |f| %>
@@ -38,7 +40,7 @@
             </dd>
             <dt>Personal Email</dt>
             <dd><%= current_user.email %></dd>
-            <dt>Years of Professional Experience</dt>
+            <dt style="line-height: 17px;">Years of Professional Experience</dt>
             <dd><%= @profile.year_of_experience %></dd>
             <!-- <dt>English</dt>
             <dd><%#= @profile.english_skill %></dd> -->
@@ -51,14 +53,14 @@
           </dl>
 				</div><!--/row-->
 				<!-- //Overview -->
-
+				<hr>
 				<!-- Skills Blocks  -->
 				<div class="row-fluid">
-					<div class="alert alert-info">
-						<span style="font-size:16px;">Skills</span>
+					<div class="profile-section">
+						<span class="profile-section-title">Skills</span>
 						<span style="font-size:15px;" class="pull-right">
-							<a data-toggle="collapse" href="#add-skill">
-								<i class="icon-pencil"></i>&nbsp;Add
+							<a data-toggle="" onclick="$('#add-skill').fadeIn('fast')">
+								<i class="icon-plus"></i>&nbsp;<b>Add skill</b>
 							</a>
 						</span>
 					</div>
@@ -74,16 +76,16 @@
 						</ul>
 					</div>
 				</div><!--/row-fluid-->
-				<br>
+				<hr>
 
 				<!-- Experience Block  -->
 				<div class="row-fluid">
 					<div class="">
-						<div class="alert alert-info">
-							<span style="font-size:16px;">Professional Experience</span>
+						<div class="profile-section">
+							<span class="profile-section-title">Professional Experience</span>
 							<span style="font-size:15px;" class="pull-right">
 								<a data-toggle="collapse" href="#add-professional-exp">
-									<i class="icon-pencil"></i>&nbsp;Add
+									<i class="icon-plus"></i>&nbsp;<b>Add a position</b>
 								</a>
 							</span>
 						</div>
@@ -122,18 +124,16 @@
 						</div>
 					</div>
 				</div><!--/row-fluid-->
-				<br>
-
-
+				<hr>
 
 				<!-- Education Block  -->
 				<div class="row-fluid">
 					<div class="">
-						<div class="alert alert-info">
-							<span style="font-size:16px;">Education</span>
+						<div class="profile-section">
+							<span class="profile-section-title">Education</span>
 							<span style="font-size:15px;" class="pull-right">
 								<a data-toggle="collapse" href="#add-education">
-									<i class="icon-pencil"></i>&nbsp;Add
+									<i class="icon-plus"></i>&nbsp;<b>Add education</b>
 								</a>
 							</span>
 						</div>
@@ -174,6 +174,10 @@
 				</div><!--/row-fluid-->
 
 			</div><!--/span9-->
+
+			<!--Left Sidebar-->
+			<%= render partial: "shared/profile_sidebar" %>
+
   	</div><!--/row-fluid-->    
 	</div>
 </div><!--/container-->		

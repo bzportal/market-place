@@ -9,16 +9,18 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
+  <body class="<%= controller_name %> <%= action_name %>" style="padding-bottom: 0px;">
     <%#= render 'shared/top' %>
-    <%= render 'shared/header' %>
-    <div style="min-height:550px;">
-    <%= yield %>
+    <div id="container">
+      <%= render 'shared/header' %>
+      <div id="wrapper">
+      <%= yield %>
+      </div>
+      <div id="footer">
+        <%= render 'shared/footer' %>
+        <%= render 'shared/copyright' %>
+      </div>
     </div>
-    <footer>
-      <%= render 'shared/footer' %>
-      <%= render 'shared/copyright' %>
-    </footer>
     <!--! end of #main -->
   </body>
 </html>

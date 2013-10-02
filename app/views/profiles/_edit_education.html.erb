@@ -8,23 +8,16 @@
     <%= p.input :school, autofocus: true %>
 
     <div class="control-group">
-      <%= p.label :from, 'From', :class => 'control-label' %>
-      <div class="controls">
-        <%= p.input_field :from, :class => 'date-picker' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= p.label :to, 'To', :class => 'control-label' %>
-      <div class="controls">
+      <%= p.label :from, 'Dates attended', :class => 'control-label' %>
+      <div class="controls form-inline">
+        <%= p.input :from, collection: {start_year: Date.today.year, end_year: Date.today.year-20} %> - 
         <%= p.input_field :to, :class => 'date-picker' %>
       </div>
     </div>
-
     <%= p.input :degree, collection: Education::DEGREES, prompt: "Please Select..." %>
     <%= p.input :area_of_study %>
     <div class="control-group">
-      <%= p.label :comments, 'Comments', :class => 'control-label' %>
+      <%= p.label :comments, 'Description', :class => 'control-label' %>
       <div class="controls">
         <%= p.text_area :comments, :class => 'overview' %>
       </div>

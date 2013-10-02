@@ -1,4 +1,4 @@
-<div id="add-skill" class="collapse">
+<div id="add-skill" style="display:none;">
   <%= simple_form_for @skill, remote: true, :html => {:method => :post, :class => 'form-horizontal' } do |p| %>
     <div class="alert alert-danger hide">
       <span></span>
@@ -7,9 +7,9 @@
     <div class="control-group">
       <%= label_tag :name, "Skills / Specialization", class: "control-label" %>
       <div class="controls">
-        <%= p.input_field :name, collection: SkillTag.all, prompt: "Select Skills" %>
-        <%= p.submit "Add", :class => "btn btn-success" %>
-        <a class="btn" onclick="$('#add-skill').collapse('hide');">Cancel</a>
+        <%= p.input_field :name, collection: SkillTag.all, :class => 'chzn-select-medium', prompt: "What are your areas of expertise?" %>
+        <button type="submit" class="btn btn-success">Add</button>
+        <a class="btn" onclick="$('#add-skill').fadeOut('fast');">Cancel</a>
       </div>
     </div>
 

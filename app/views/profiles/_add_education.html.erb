@@ -9,15 +9,10 @@
 
     <div class="control-group">
       <%= p.label :from, 'From', :class => 'control-label' %>
-      <div class="controls">
-        <%= p.input_field :from, :class => 'date-picker' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= p.label :to, 'To', :class => 'control-label' %>
-      <div class="controls">
-        <%= p.input_field :to, :class => 'date-picker' %>
+      <div class="controls form-inline">
+        <% year = Date.today.year %>
+        <%= p.input_field :from, collection: (year-20)..year, style: "width: 100px" %> - 
+        <%= p.input_field :from, collection: (year-20)..year, style: "width: 100px" %>
       </div>
     </div>
 

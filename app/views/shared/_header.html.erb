@@ -1,8 +1,8 @@
 
 <!--=== Header ===-->
-<div class="header">
+<div class="<%= header_class %>">
   <div class="menu">
-    <div class="container"> 
+    <div class="container">
       <!-- Logo -->
       <div class="logo">                       
         <h2>
@@ -34,7 +34,8 @@
                 <% end %>
                 <ul class="nav top-2">
                   <li>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%= current_user.fullname %>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                      <%= image_tag current_user.profile.photo.url(:medium), style: "width: 40px;" %>
                       <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -85,18 +86,19 @@
     </div>
   </div><!-- /banner-area -->
   <% end %>
+
+  <% if landing_page && !signup_page%>
+  <div class="clients">
+    <ul class="inline span11 center">
+      <li><img src="/assets/clients/1.png"></li>
+      <li><img src="/assets/clients/2.png"></li>
+      <li><img src="/assets/clients/3.png"></li>
+      <li><img src="/assets/clients/4.png"></li>
+      <li><img src="/assets/clients/5.png"></li>
+      <li><img src="/assets/clients/6.png"></li>
+    </ul>
+  </div>
+  <% end %>
 </div><!--/header -->
 
-<% if landing_page && !signup_page%>
-<div class="clients">
-  <ul class="inline span11 center">
-    <li><img src="/assets/clients/1.png"></li>
-    <li><img src="/assets/clients/2.png"></li>
-    <li><img src="/assets/clients/3.png"></li>
-    <li><img src="/assets/clients/4.png"></li>
-    <li><img src="/assets/clients/5.png"></li>
-    <li><img src="/assets/clients/6.png"></li>
-  </ul>
-</div>
-<% end %>
 <!--=== End Header ===-->
