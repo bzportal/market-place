@@ -24,7 +24,7 @@ body {
 	color:#333; 
   font-size:12px;
   line-height:1.6;
-	background:#fff;
+	background:#e9eaed;
 	height: 100%;
 	margin: 0;
 }
@@ -2098,7 +2098,7 @@ dt, dd {
 	border: 1px solid #ccc;
 	padding: 20px;
 	background-color: #fff;
-	box-shadow: 5px 5px 5px #888888;
+	box-shadow: 5px 5px 5px #eee;
 }
 #profile-photo
 {

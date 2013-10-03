@@ -8,7 +8,7 @@
 <!-- My Profile -->
 <div class="margin-bottom-20">
 	<br>
-	<div class="row-fluid">
+	<div class="row-fluid white-background">
   	<div class="span6">
       <div class="profile-img-wrapper">
         <%= image_tag current_user.profile.photo.url(:medium) %>
@@ -23,14 +23,13 @@
       <%= link_to "Complete your proflie", edit_profile_path(current_user.profile) %>
     </div>
   </div>
-  <hr>
-
-	<div class="span11">
-		<div class="space"></div>
-		<div id="prepper_calendar" class="calendar"></div>
-	</div>
 </div>
-
+<div class="row-fluid white-background">
+  <div class="span12">
+    <div class="space"></div>
+    <div id="prepper_calendar" class="calendar"></div>
+  </div>
+</div>
 <script type="text/javascript">
 $(function(){
 

@@ -47,8 +47,6 @@ input[type="button"].btn, input[type="submit"].btn
 	background-color: white;
 	border: 1px solid #ccc;
 	padding: 20px;
-	box-shadow: 5px 5px 5px #888888;
-	
 }
 
 .img-circle {
