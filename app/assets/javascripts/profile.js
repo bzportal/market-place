@@ -139,9 +139,9 @@ $(function(){
 
   $("#profile a[data-toggle='collapse']").on("click", function(){
     $("#profile .collapse").collapse('hide');
-
+    console.log("teset");
     var target = $(this).attr("href");
-    $(target).collapse('toggle');
+    // $(target).collapse('show');
   });
 
 

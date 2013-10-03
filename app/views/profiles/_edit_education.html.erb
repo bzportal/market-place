@@ -10,8 +10,9 @@
     <div class="control-group">
       <%= p.label :from, 'Dates attended', :class => 'control-label' %>
       <div class="controls form-inline">
-        <%= p.input :from, collection: {start_year: Date.today.year, end_year: Date.today.year-20} %> - 
-        <%= p.input_field :to, :class => 'date-picker' %>
+        <% year = Date.today.year %>
+        <%= p.input_field :from, collection: (year-20)..year, style: "width: 100px" %> - 
+        <%= p.input_field :to, collection: (year-20)..year, style: "width: 100px" %>
       </div>
     </div>
     <%= p.input :degree, collection: Education::DEGREES, prompt: "Please Select..." %>
