@@ -11,12 +11,7 @@
 		        <div class="pull-left booking-img">
 		        	<div class="row-fluid">
  								<%= image_tag p.user.profile.photo.url(:medium) %>
- 								<h5>
-		            	<strong>
-		            		<%= p.user.fullname %>
-		            	</strong>
-		            </h5>
-		            <ul class="unstyled inline">
+		            <ul class="unstyled inline rating-star">
 		               <li><span class="rating-static rating-45"></span></li>
 		               <li><i class="icon-star"></i></li>
 		               <li><i class="icon-star"></i></li>
@@ -27,7 +22,10 @@
  							</div>
 		        </div>
 		        <div class="span8" style="overflow:hidden;">
-	            <h2><%= link_to p.title, prep_path(p), :class => 'color-blue' %></a></h2>
+	            <h2>
+	            	<%= link_to p.title, prep_path(p), :class => 'color-blue' %>
+	            	 - <%= p.user.fullname %>
+	            </h2>
 	            <p>Posted <%= p.elapsed %> ago </p>
 	            <% scheduled = p.prep_applications.find_by_status(:scheduled) %>
 	            
