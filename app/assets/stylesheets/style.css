@@ -1471,7 +1471,7 @@ ul.blog-tags a {
 .booking-blocks .booking-img li i {
   color: #78ccf8;
   font-size: 12px;
-  margin-right: 5px;
+  margin-right: 3px;
 }
 
 .booking-blocks .booking-img img {
@@ -1496,7 +1496,7 @@ ul.inline li{
 .booking-blocks ul.inline li i {
   color: #f8be2c;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 11px;
 }
 
 .booking-blocks ul.inline li i:hover {
