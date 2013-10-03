@@ -9,11 +9,20 @@
 <div class="margin-bottom-20">
 	<br>
 	<div class="row-fluid">
-  	<div class="span7">
-  		<%= image_tag current_user.profile.photo.url(:medium) unless current_user.profile.nil? %>
-  	</div>
+  	<div class="span6">
+      <div class="profile-img-wrapper">
+        <%= image_tag current_user.profile.photo.url(:medium) %>
+      </div>
+    </div>
+    <div class="span6">
+      <br><br>
+      <div class="progress pull-left" data-percent="<%= completeness %>%" style="width: 120px;">
+        <div class="bar" style="width:<%= completeness %>%">
+        </div>
+      </div>
+      <%= link_to "Complete your proflie", edit_profile_path(current_user.profile) %>
+    </div>
   </div>
-  <h4><a href="#"><%= current_user.fullname %></a></h4>
   <hr>
 
 	<div class="span11">

@@ -1,8 +1,5 @@
 <div class="container">		
 	<div class="row-fluid">
-		<div class="span3">
-	    <%= render "profile_sidebar" %><!-- :locals => { member: Member.new(), group_id: @group.id } -->
-		</div><!--/span3-->
 		<!-- Search Results -->
 		<div class="span9">
 			<br>
@@ -60,5 +57,9 @@
 		    </div>
 	    <% end %>
 		</div><!--/span9-->
+
+		<div class="span3">
+	    <%= render "profile_sidebar" %><!-- :locals => { member: Member.new(), group_id: @group.id } -->
+		</div><!--/span3-->
 	</div><!--/row-fluid-->
 </div><!--/container-->

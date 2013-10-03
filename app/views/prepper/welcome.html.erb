@@ -13,18 +13,20 @@
 			<div style="background-color: #ccc; margin:0; padding: 7px;">
 				<b style="font-size:18px;"><center>My Profile Completeness<center></b>
 			</div>
-			<div style="padding: 10px; border: 1px solid #ccc; display: block; height: 100px">
+			<div style="padding: 10px; border: 1px solid #ccc; display: block; height: 150px">
 				<div class="row-fluid">
 					<div class="span6">
-						<%= image_tag current_user.profile.photo.url(:medium), style: "width: 100px; margin-right: 10px; float: left" %>
+						<div class="profile-img-wrapper">
+							<%= image_tag current_user.profile.photo.url(:medium) %>
+						</div>
 					</div>
 					<div class="span6">
-						<br>
+						<br><br>
 						<div class="progress pull-left" data-percent="<%= completeness %>%" style="width: 120px;">
 							<div class="bar" style="width:<%= completeness %>%">
 							</div>
 						</div>
-						<%= link_to "Complet your proflie", edit_profile_path(current_user.profile) %>
+						<%= link_to "Complete your proflie", edit_profile_path(current_user.profile) %>
 					</div>
 				</div>
 			</div>

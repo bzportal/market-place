@@ -15,4 +15,5 @@
  *= require style_responsive
  *= require custom
  *= require_self
+ *= require_tree .
  */
