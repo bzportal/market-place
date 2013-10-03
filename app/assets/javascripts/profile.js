@@ -137,13 +137,14 @@ $(function(){
   });
 
 
-  $("#profile a[data-toggle='collapse']").on("click", function(){
-    $("#profile .collapse").collapse('hide');
-    console.log("teset");
+  $("#profile .fade-control").on("click", function(){
     var target = $(this).attr("href");
-    // $(target).collapse('show');
-  });
+    if ($(target).css('display') == 'block')
+      return;
+    $("#profile .fade-section").fadeOut("1000");
 
+    $(target).fadeIn('fast');
+  });
 
 
   /* Skills */

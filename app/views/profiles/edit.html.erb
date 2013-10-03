@@ -59,7 +59,7 @@
 					<div class="profile-section">
 						<span class="profile-section-title">Skills</span>
 						<span style="font-size:15px;" class="pull-right">
-							<a data-toggle="" onclick="$('#add-skill').fadeIn('fast')">
+							<a class="fade-control" href="#add-skill">
 								<i class="icon-plus"></i>&nbsp;<b>Add skill</b>
 							</a>
 						</span>
@@ -84,7 +84,7 @@
 						<div class="profile-section">
 							<span class="profile-section-title">Professional Experience</span>
 							<span style="font-size:15px;" class="pull-right">
-								<a data-toggle="collapse" href="#add-professional-exp">
+								<a class="fade-control" href="#add-professional-exp">
 									<i class="icon-plus"></i>&nbsp;<b>Add a position</b>
 								</a>
 							</span>
@@ -98,7 +98,7 @@
 							<div id="pro_experience<%= p.id %>">
 								<h5>
 									<strong><%= p.title %></strong> | <%= p.company_name %>
-									<a id="edit_link" data-toggle="collapse" href="#professional-exp-<%= p.id%>">
+									<a id="edit_link" class="fade-control" href="#professional-exp-<%= p.id%>">
 										<i class='icon-edit'></i>
 									</a>
 									<%= link_to('<i class="icon-trash"></i>'.html_safe, pro_experience_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
@@ -114,7 +114,7 @@
 							<h5>
 								<span id="title"></span>
 								<span id="action">
-									<a id="edit_link" data-toggle="collapse"><i class='icon-edit'></i></a>
+									<a id="edit_link" class="fade-control"><i class='icon-edit'></i></a>
 
 									<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
 								</span>
@@ -132,7 +132,7 @@
 						<div class="profile-section">
 							<span class="profile-section-title">Education</span>
 							<span style="font-size:15px;" class="pull-right">
-								<a data-toggle="collapse" href="#add-education">
+								<a class="fade-control" href="#add-education">
 									<i class="icon-plus"></i>&nbsp;<b>Add education</b>
 								</a>
 							</span>
@@ -146,7 +146,7 @@
 							<div id="education<%= e.id %>">
 								<h5>
 									<strong><%= Education::DEGREES[e.degree] + ", " + e.area_of_study %></strong> | <%= e.school %>
-									<a id="edit_link" data-toggle="collapse" href="#education-<%= e.id%>">
+									<a id="edit_link" class="fade-control" href="#education-<%= e.id%>">
 											<i class='icon-edit'></i>
 										</a>
 										<%= link_to('<i class="icon-trash"></i>'.html_safe, education_path(e), :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
@@ -162,7 +162,7 @@
 							<h5>
 								<span id="title"></span>
 								<span id="action">
-									<a id="edit_link" data-toggle="collapse"><i class='icon-edit'></i></a>
+									<a id="edit_link" class="fade-control"><i class='icon-edit'></i></a>
 
 									<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
 								</span>
@@ -182,6 +182,6 @@
 	</div>
 </div><!--/container-->
 <script type="text/javascript">
-$(".collapse").collapse('hide');
+$(".fade-section").css('display', 'none');
 </script>
 <!--=== End Content Part ===-->

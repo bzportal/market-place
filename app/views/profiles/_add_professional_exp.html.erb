@@ -1,4 +1,4 @@
-<div id="add-professional-exp" class="collapse">
+<div id="add-professional-exp" class="fade-section">
   <%= simple_form_for @pro_experience, remote: true, :html => {:method => :post, :class => 'form-horizontal' } do |p| %>
     <div class="alert alert-danger hide">
       <span></span>
@@ -29,7 +29,7 @@
     </div>
     <div class="controls form-inline">
       <%= p.submit "Add", :class => "btn btn-success" %>
-      <a class="btn" onclick="$('#add-professional-exp').collapse('hide');">Cancel</a>
+      <a class="btn" onclick="$('#add-professional-exp').fadeOut('fast');">Cancel</a>
     </div>
   <% end %>
 </div>
