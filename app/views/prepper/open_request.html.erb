@@ -22,10 +22,10 @@
  							</div>
 		        </div>
 		        <div class="span8" style="overflow:hidden;">
-	            <h2>
+	            <h4><b>
 	            	<%= link_to p.title, prep_path(p), :class => 'color-blue' %>
 	            	 - <%= p.user.fullname %>
-	            </h2>
+	            </b></h4>
 	            <p>Posted <%= p.elapsed %> ago </p>
 	            <% scheduled = p.prep_applications.find_by_status(:scheduled) %>
 	            

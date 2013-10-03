@@ -3,181 +3,168 @@
 	<div class="span10 center">
 		<div class="row-fluid" id="prepper-profile">
   		<div class="span9" id="profile">
-				<br>
-				<div class="profile-section">
-					<span class="profile-section-title">My Account Summary</span>
-					<span style="font-size:15px;" class="pull-right">
-						<a data-toggle="modal" data-target="#profile-overview">
-							<i class="icon-edit"></i><b>&nbsp;Edit Summary</b>
-						</a>
-					</span>
-	        <%= render :partial => "edit_overview" %>
-				</div>
 				<!-- Accont Summary -->
-				<div class="row-fluid margin-bottom-40">
-	        <dl class="dl-horizontal">
-            <dt>Title</dt>
-            <dd><%= @profile.title %></dd>
-            <dt>Portrait</dt>
-            <dd>
-            	<div class="row-fluid">
-              	<div class="pull-left">
-				        	<div class="profile-img-wrapper">
-				          	<%= image_tag @profile.photo.url(:medium), id: "photo" %>
-				          </div>
-				        </div>
-              	<div class="span5">
-              		<br>
-              		<p>Add a new photo, or as:</p>
-              		<a style="color: #0093f0;" id="profile_photo_link">Edit / Upload Photo</a>
-              		<!-- <a style="color: #0093f0;">Delete Photo</a> -->
-              	</div>
-              	<%= form_for :profile, url: profile_path(@profile), html: { method: "put", id: "photo_form" } do |f| %>
-              		<%= f.file_field :photo, :class => "hidden" %>
-              	<% end %>
-              </div>
-            </dd>
-            <dt>Personal Email</dt>
-            <dd><%= current_user.email %></dd>
-            <dt style="line-height: 17px;">Years of Professional Experience</dt>
-            <dd><%= @profile.year_of_experience %></dd>
-            <!-- <dt>English</dt>
-            <dd><%#= @profile.english_skill %></dd> -->
-            <dt>Overview</dt>
-            <dd>
-            	<p>
-            		<%= @profile.overview.gsub("\n", "<br>").html_safe unless @profile.overview.nil? %>
-            	</p>
-            </dd>
-          </dl>
-				</div><!--/row-->
-				<!-- //Overview -->
-				<hr>
-				<!-- Skills Blocks  -->
-				<div class="row-fluid">
-					<div class="profile-section">
-						<span class="profile-section-title">Skills</span>
-						<span style="font-size:15px;" class="pull-right">
-							<a class="fade-control" href="#add-skill">
-								<i class="icon-plus"></i>&nbsp;<b>Add skill</b>
-							</a>
-						</span>
-					</div>
-					<%= render :partial => "add_skills" %>
-					<div class="row-fluid">
-						<ul id="skill_list" class="blog-tags inline">
-						<% skills = @profile.skills %>
-						<% skills.each do |s| %>
-							<li id="job_type<%= s.id %>">
-								<%= link_to("#{s.name}<i class='icon-remove'></i>".html_safe, skill_path(s), remote:true, :method => :delete) %>
-							</li>
-						<% end %>
-						</ul>
-					</div>
-				</div><!--/row-fluid-->
-				<hr>
-
-				<!-- Experience Block  -->
-				<div class="row-fluid">
-					<div class="">
-						<div class="profile-section">
-							<span class="profile-section-title">Professional Experience</span>
-							<span style="font-size:15px;" class="pull-right">
-								<a class="fade-control" href="#add-professional-exp">
-									<i class="icon-plus"></i>&nbsp;<b>Add a position</b>
-								</a>
-							</span>
-						</div>
-						<%= render :partial => "add_professional_exp" %>
-					</div>
-					<div class="span12" id="pro_experience_list">
-						<% pro_experiences = @profile.pro_experiences %>
-						<% pro_experiences.each_with_index do |p, i| %>
-							<%= render :partial => "edit_professional_exp", :locals => {:pro_experience => p} %>
-							<div id="pro_experience<%= p.id %>">
-								<h5>
-									<strong><%= p.title %></strong> | <%= p.company_name %>
-									<a id="edit_link" class="fade-control" href="#professional-exp-<%= p.id%>">
-										<i class='icon-edit'></i>
-									</a>
-									<%= link_to('<i class="icon-trash"></i>'.html_safe, pro_experience_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
-								</h5>
-								<p><%= p.from + " - " + p.to %></p>
-								<p><%= p.description %></p>
-								<%= "<hr>".html_safe if i < pro_experiences.size - 1 %>
-							</div>
-						<% end %>
-						<div id="pro_experience_template" style="display: none">
-							<%= render :partial => "edit_professional_exp", :locals => {:pro_experience => ProExperience.new} %>
-							<hr>
-							<h5>
-								<span id="title"></span>
-								<span id="action">
-									<a id="edit_link" class="fade-control"><i class='icon-edit'></i></a>
-
-									<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
-								</span>
-							</h5>
-							<p id="term"></p>
-							<p id="description"></p>
-						</div>
-					</div>
-				</div><!--/row-fluid-->
-				<hr>
-
-				<!-- Education Block  -->
-				<div class="row-fluid">
-					<div class="">
-						<div class="profile-section">
-							<span class="profile-section-title">Education</span>
-							<span style="font-size:15px;" class="pull-right">
-								<a class="fade-control" href="#add-education">
-									<i class="icon-plus"></i>&nbsp;<b>Add education</b>
-								</a>
-							</span>
-						</div>
-	          <%= render :partial => "add_education" %>
+				<div class="row-fluid margin-bottom-5 white-background">
+					<div class="pull-left">
+	        	<div class="profile-img-wrapper img-width-200">
+	        		<% if @profile.photo.size == 0 %>
+	        			<a class="add-photo profile_photo_link">Add Photo</a>
+	        		<% else %>
+	        			<a class="edit-photo profile_photo_link"><i class="icon-camera"></i> Edit</a>
+	        		<% end %>
+	        		<a class="profile_photo_link">
+          		<%= image_tag @profile.photo.url(:medium), id: "photo" %>
+	        		</a>
+	          </div>
 	        </div>
-					<div class="span12" id="education_list">
-						<% educations = @profile.educations %>
-						<% educations.each_with_index do |e, i| %>
-							<%= render :partial => "edit_education", :locals => {:education => e} %>
-							<div id="education<%= e.id %>">
-								<h5>
-									<strong><%= Education::DEGREES[e.degree] + ", " + e.area_of_study %></strong> | <%= e.school %>
-									<a id="edit_link" class="fade-control" href="#education-<%= e.id%>">
-											<i class='icon-edit'></i>
-										</a>
-										<%= link_to('<i class="icon-trash"></i>'.html_safe, education_path(e), :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
-								</h5>
-								<p><%= e.from + " - " + e.to %></p>
-								<p><%= e.comments %></p>
-								<%= "<hr>".html_safe if i < educations.size - 1 %>
-							</div>
-						<% end %>
-						<div id="education_template" style="display: none">
-							<%= render :partial => "edit_education", :locals => {:education => Education.new} %>
-							<hr>
-							<h5>
-								<span id="title"></span>
-								<span id="action">
-									<a id="edit_link" class="fade-control"><i class='icon-edit'></i></a>
-
-									<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
-								</span>
-							</h5>
-							<p id="term"></p>
-							<p id="description"></p>
-						</div>
+	        <%= form_for :profile, url: profile_path(@profile), html: { method: "put", id: "photo_form" } do |f| %>
+        		<%= f.file_field :photo, :class => "hidden" %>
+        	<% end %>
+					<div class="span7">
+						<br>
+						<h4><b class="color-black"><%= current_user.fullname %></b></h4>
+						<h5><b class="color-black"><%= @profile.title %></b></h5>
+						<h5><b class="color-black">Years of Professional Experience: <%= @profile.year_of_experience %></b></h5>
 					</div>
-				</div><!--/row-fluid-->
+				</div><!--/row-->
+				<div class="white-background padding-20">
+					<div class="row-fluid">
+						<div class="profile-section">
+							<span class="profile-section-title">My Account Summary</span>
+							<span style="font-size:15px;" class="pull-right">
+								<a data-toggle="modal" data-target="#profile-overview">
+									<i class="icon-edit"></i><b>&nbsp;Edit Summary</b>
+								</a>
+							</span>
+			        <%= render :partial => "edit_overview" %>
+						</div>
+						<!-- //Overview -->
+						<hr>
+						<!-- Skills Blocks  -->
+						<div class="row-fluid">
+							<div class="profile-section">
+								<span class="profile-section-title">Skills</span>
+								<span style="font-size:15px;" class="pull-right">
+									<a class="fade-control" href="#add-skill">
+										<i class="icon-plus"></i>&nbsp;<b>Add skill</b>
+									</a>
+								</span>
+							</div>
+							<%= render :partial => "add_skills" %>
+							<div class="row-fluid">
+								<ul id="skill_list" class="blog-tags inline">
+								<% skills = @profile.skills %>
+								<% skills.each do |s| %>
+									<li id="job_type<%= s.id %>">
+										<%= link_to("#{s.name}<i class='icon-remove'></i>".html_safe, skill_path(s), remote:true, :method => :delete) %>
+									</li>
+								<% end %>
+								</ul>
+							</div>
+						</div><!--/row-fluid-->
+						<hr>
 
+						<!-- Experience Block  -->
+						<div class="row-fluid">
+							<div class="">
+								<div class="profile-section">
+									<span class="profile-section-title">Professional Experience</span>
+									<span style="font-size:15px;" class="pull-right">
+										<a class="fade-control" href="#add-professional-exp">
+											<i class="icon-plus"></i>&nbsp;<b>Add a position</b>
+										</a>
+									</span>
+								</div>
+								<%= render :partial => "add_professional_exp" %>
+							</div>
+							<div class="span12" id="pro_experience_list">
+								<% pro_experiences = @profile.pro_experiences %>
+								<% pro_experiences.each_with_index do |p, i| %>
+									<%= render :partial => "edit_professional_exp", :locals => {:pro_experience => p} %>
+									<div id="pro_experience<%= p.id %>">
+										<h5>
+											<strong><%= p.title %></strong> | <%= p.company_name %>
+											<a id="edit_link" class="fade-control" href="#professional-exp-<%= p.id%>">
+												<i class='icon-edit'></i>
+											</a>
+											<%= link_to('<i class="icon-trash"></i>'.html_safe, pro_experience_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
+										</h5>
+										<p><%= p.from + " - " + p.to %></p>
+										<p><%= p.description %></p>
+										<%= "<hr>".html_safe if i < pro_experiences.size - 1 %>
+									</div>
+								<% end %>
+								<div id="pro_experience_template" style="display: none">
+									<%= render :partial => "edit_professional_exp", :locals => {:pro_experience => ProExperience.new} %>
+									<hr>
+									<h5>
+										<span id="title"></span>
+										<span id="action">
+											<a id="edit_link" class="fade-control"><i class='icon-edit'></i></a>
+
+											<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
+										</span>
+									</h5>
+									<p id="term"></p>
+									<p id="description"></p>
+								</div>
+							</div>
+						</div><!--/row-fluid-->
+						<hr>
+
+						<!-- Education Block  -->
+						<div class="row-fluid">
+							<div class="">
+								<div class="profile-section">
+									<span class="profile-section-title">Education</span>
+									<span style="font-size:15px;" class="pull-right">
+										<a class="fade-control" href="#add-education">
+											<i class="icon-plus"></i>&nbsp;<b>Add education</b>
+										</a>
+									</span>
+								</div>
+			          <%= render :partial => "add_education" %>
+			        </div>
+							<div class="span12" id="education_list">
+								<% educations = @profile.educations %>
+								<% educations.each_with_index do |e, i| %>
+									<%= render :partial => "edit_education", :locals => {:education => e} %>
+									<div id="education<%= e.id %>">
+										<h5>
+											<strong><%= Education::DEGREES[e.degree] + ", " + e.area_of_study %></strong> | <%= e.school %>
+											<a id="edit_link" class="fade-control" href="#education-<%= e.id%>">
+													<i class='icon-edit'></i>
+												</a>
+												<%= link_to('<i class="icon-trash"></i>'.html_safe, education_path(e), :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
+										</h5>
+										<p><%= e.from + " - " + e.to %></p>
+										<p><%= e.comments %></p>
+										<%= "<hr>".html_safe if i < educations.size - 1 %>
+									</div>
+								<% end %>
+								<div id="education_template" style="display: none">
+									<%= render :partial => "edit_education", :locals => {:education => Education.new} %>
+									<hr>
+									<h5>
+										<span id="title"></span>
+										<span id="action">
+											<a id="edit_link" class="fade-control"><i class='icon-edit'></i></a>
+
+											<%= link_to('<i class="icon-trash"></i>'.html_safe, '', :data => { :confirm => "Are you sure?" }, :method => :delete, remote: true) %>
+										</span>
+									</h5>
+									<p id="term"></p>
+									<p id="description"></p>
+								</div>
+							</div>
+						</div><!--/row-fluid-->
+					</div><!-- background section -->
+				</div><!-- white background -->
 			</div><!--/span9-->
 
 			<!--Left Sidebar-->
 			<%= render partial: "shared/profile_sidebar" %>
-
-  	</div><!--/row-fluid-->    
+	  </div>
 	</div>
 </div><!--/container-->
 <script type="text/javascript">

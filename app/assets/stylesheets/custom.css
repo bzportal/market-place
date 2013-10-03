@@ -12,13 +12,31 @@ label, input, button, select, textarea
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    width: 120px;
-    height: 120px;
     margin-right: 10px;
+    position: relative;
     border: 1px solid #999;
 }
+
 .profile-img-wrapper * {
     vertical-align: middle;
+}
+
+.edit-photo
+{
+	color: #0093f0;
+	text-align: center;
+	font-size: 20px; font-weight: bold;
+	position: absolute;
+	margin:0px 130px;
+}
+
+.add-photo
+{
+	color: #0093f0;
+	text-align: center;
+	font-size: 20px; font-weight: bold;
+	position: absolute;
+	margin: 60px 40px;
 }
 
 input[type="button"].btn, input[type="submit"].btn
@@ -46,9 +64,12 @@ input[type="button"].btn, input[type="submit"].btn
 {
 	background-color: white;
 	border: 1px solid #ccc;
-	padding: 20px;
 }
 
+.padding-20
+{
+	padding: 20px;
+}
 .img-circle {
   border-radius: 500px 500px 500px 500px !important;
 }

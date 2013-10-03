@@ -8,7 +8,6 @@ Website: http://htmlstream.com/preview/unify
 
 /*Import Google Fonts*/
 @import url(http://fonts.googleapis.com/css?family=Monda:400,700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 * {
 	border-radius: 0px 0px !important;
@@ -54,8 +53,7 @@ h1, h2, h3, h4, h5 {
 	text-shadow:none; 
 	text-shadow:0 0 1px #f6f6f6;
 	font-weight:normal !important; 
-	font-family:'Open Sans', sans-serif; 
-} 
+}
 h1 i, h2 i, h3 i, h4 i, h5 i {
 	margin-right:7px;
 }
@@ -188,7 +186,6 @@ blockquote:hover {
 	font-size:16px;
 	background:#fcfcfc;
 	border-left:4px solid #94c564; 
-	font-family:'Open Sans', sans-serif;
 }
 .hero h1, .hero p { 
 	text-shadow:1px 1px 0 #fff;
@@ -1515,7 +1512,7 @@ ul.inline li{
 .color-red { color:#c00;}
 .color-green { color:#72c02c;}
 .color-blue { color:#3498db;}
-.color-black { color:#333;}
+.color-black { color:black;}
 
 .pull-lft { text-align:left;}
 .pull-rgt { text-align:right;}
@@ -1525,7 +1522,22 @@ ul.inline li{
 
 .overflow-hidden { overflow:hidden;}
 .padding-left-5 { padding-left:5px;}
-.img-width-200 { width:200px;}
+
+.img-width-200
+{
+	width: 200px;
+	height: 200px;
+}
+
+.img-width-120
+{
+	width: 120px;
+	height: 120px;
+}
+
+.img-width-200 img { width:200px;}
+.img-width-120 img { width:120px;}
+
 
 /*Image Border*/
 .img-border {
@@ -2000,16 +2012,9 @@ dt, dd {
 	color: #fefefe;
 }
 
-#process-section img
+#landing-page
 {
-	width: 250px;
-	margin-bottom: 20px;
-}
-
-#process-section
-{
-	text-align: center;
-	margin-top: 50px;
+	background-color: white;
 }
 
 #landing-page section
@@ -2027,6 +2032,19 @@ dt, dd {
 #landing-page .highlighted
 {
 	background-color: #3A66A6;
+}
+
+#process-section img
+{
+	width: 250px;
+	margin-bottom: 20px;
+}
+
+#process-section
+{
+	text-align: center;
+	margin: 0 auto !important;
+	padding-top: 50px;
 }
 
 #landing-page .step{
@@ -2093,13 +2111,7 @@ dt, dd {
 	margin-bottom: 50px;
 	background-position: 0px 0px !important;
 }
-#profile
-{
-	border: 1px solid #ccc;
-	padding: 20px;
-	background-color: #fff;
-	box-shadow: 5px 5px 5px #eee;
-}
+
 #profile-photo
 {
 	margin-left: 10px;
@@ -2108,8 +2120,4 @@ dt, dd {
 {
 	margin-bottom: 5px;
 	line-height: 14px;
-}
-#photo
-{
-	width: 120px;
 }

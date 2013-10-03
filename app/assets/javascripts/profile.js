@@ -175,7 +175,7 @@ $(function(){
 
   /* profile image
   -----------------------------------------------------------------*/
-  $('#profile_photo_link').on('click', function(){
+  $('.profile_photo_link').on('click', function(){
     $('#profile_photo').click();
   });
 

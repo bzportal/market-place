@@ -11,7 +11,7 @@ class Profile < ActiveRecord::Base
   has_many :pro_experiences
 	before_create :generate_token
 
-  has_attached_file :photo, :styles => { :medium => "120x120>", mini: "100x100>", tiny: "50x50" }, 
+  has_attached_file :photo, :styles => { :medium => "200x200>", mini: "120x120>", tiny: "50x50" }, 
     storage: :dropbox,
     dropbox_credentials: Rails.root.join("config/dropbox.yml"),
     default_url: "/assets/blank_user.jpg", 

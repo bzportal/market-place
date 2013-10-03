@@ -7,27 +7,24 @@
 			<% @preps.each do |p| %>
 		    <div class="row-fluid">
 		      <div class="booking-blocks">
-		        <div class="span3 pull-left booking-img">
+		        <div class="pull-left booking-img">
 		        	<div class="row-fluid">
-  							<%= image_tag p.user.profile.photo.url(:medium) %>
-  						</div>
-	            
-	            <h5>
-	            	<strong>
-	            		<%= p.user.fullname %>
-	            	</strong>
-	            </h5>
-	            <ul class="unstyled inline">
-	               <li><span class="rating-static rating-45"></span></li>
-	               <li><i class="icon-star"></i></li>
-	               <li><i class="icon-star"></i></li>
-	               <li><i class="icon-star"></i></li>
-	               <li><i class="icon-star"></i></li>
-	               <li><i class="icon-star-empty"></i></li>
-	            </ul>
+ 								<%= image_tag p.user.profile.photo.url(:medium) %>
+		            <ul class="unstyled inline rating-star">
+		               <li><span class="rating-static rating-45"></span></li>
+		               <li><i class="icon-star"></i></li>
+		               <li><i class="icon-star"></i></li>
+		               <li><i class="icon-star"></i></li>
+		               <li><i class="icon-star"></i></li>
+		               <li><i class="icon-star-empty"></i></li>
+		            </ul>
+ 							</div>
 		        </div>
 		        <div class="span8" style="overflow:hidden;">
-	            <h2><%= link_to p.title, prep_path(p), :class => 'color-blue' %></a></h2>
+	            <h4><b>
+	            	<%= link_to p.title, prep_path(p), :class => 'color-blue' %>
+	            	 - <%= p.user.fullname %>
+	            </b></h4>
 	            <p>Posted <%= p.elapsed %> ago </p>
 	            <p>
 								<% if !p.description.nil? && p.description.length > 200 %>
