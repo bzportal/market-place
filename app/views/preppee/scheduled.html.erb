@@ -1,10 +1,7 @@
 <div class="container">	
 	<div class="row-fluid">
-		<div class="span3">
-	    <%= render "profile_sidebar" %><!-- :locals => { member: Member.new(), group_id: @group.id } -->
-		</div><!--/span3-->
 		<!-- Search Results -->
-		<div class="span9">
+		<div class="span8">
 			<br>
 			<%= render "layouts/messages" %>
 			<% @preps.each do |p| %>
@@ -20,7 +17,7 @@
 	            	</strong>
 	            </h5>
 	            <ul class="unstyled inline">
-	               <li><span class="rating-static rating-45"></span></li>
+	               <li><span class="rating-star rating-45"></span></li>
 	               <li><i class="icon-star"></i></li>
 	               <li><i class="icon-star"></i></li>
 	               <li><i class="icon-star"></i></li>
@@ -58,5 +55,8 @@
 		    </div>
 	    <% end %>
 		</div><!--/span9-->
+		<div class="span3">
+	    <%= render "profile_sidebar" %><!-- :locals => { member: Member.new(), group_id: @group.id } -->
+		</div><!--/span3-->
 	</div><!--/row-fluid-->
 </div><!--/container-->

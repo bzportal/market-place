@@ -6,11 +6,13 @@
 }
 </style>
 <!-- My Profile -->
-<div class="margin-bottom-20 white-background">
-	<br>
-  <div class="row-fluid">
+<div class="margin-bottom-5">
+  <br>
+  <div class="row-fluid white-background">
     <div class="span6">
-      <%= image_tag current_user.profile.photo.url(:medium), style: "width: 100px; margin-right: 10px; float: left" %>
+      <div class="profile-img-wrapper img-width-120">
+        <%= image_tag current_user.profile.photo.url(:medium) %>
+      </div>
     </div>
     <div class="span6">
       <br><br>
@@ -21,14 +23,15 @@
       <%= link_to "Complete your proflie", edit_profile_path(current_user.profile) %>
     </div>
   </div>
-  <hr>
-	<div class="span10">
-		<div class="space"></div>
-		<div id="preppee_calendar" class="calendar"></div>
-	</div>
-  <br>
-  <div class="span10">
-    <div class="headline"><h4>Prep Sessions</h4></div>
+</div>
+<div class="row-fluid white-background">
+  <div class="span12">
+    <div class="space"></div>
+    <div id="preppee_calendar" class="calendar"></div>
+  </div>
+</div>
+<div class="row-fluid white-background">
+  <div style="margin-left: 10px;">
     <h5><%= link_to "Add Interview Prep", new_prep_path(:prep_type => 'interview') %></h5>
     <h5><%= link_to "Add Resume Prep", new_prep_path(:prep_type => 'resume') %></h5>
     <h5><%= link_to "Purchase Prep Guide" %></h5>

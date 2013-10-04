@@ -10,7 +10,7 @@
 	        		<% if @profile.photo.size == 0 %>
 	        			<a class="add-photo profile_photo_link">Add Photo</a>
 	        		<% else %>
-	        			<a class="edit-photo profile_photo_link"><i class="icon-camera"></i> Edit</a>
+	        			<a class="edit-photo profile_photo_link"><i class="icon-camera"></i></a>
 	        		<% end %>
 	        		<a class="profile_photo_link">
           		<%= image_tag @profile.photo.url(:medium), id: "photo" %>
@@ -21,7 +21,6 @@
         		<%= f.file_field :photo, :class => "hidden" %>
         	<% end %>
 					<div class="span7">
-						<br>
 						<h4><b class="color-black"><%= current_user.fullname %></b></h4>
 						<h5><b class="color-black"><%= @profile.title %></b></h5>
 						<h5><b class="color-black">Years of Professional Experience: <%= @profile.year_of_experience %></b></h5>

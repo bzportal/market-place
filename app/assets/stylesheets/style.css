@@ -1437,8 +1437,8 @@ ul.blog-tags a {
 
 .booking-blocks {
 	overflow: hidden;
-	padding: 15px 20px;
-	margin-bottom: 25px;
+	padding: 15px 20px 0px;
+	margin-bottom: 4px;
 	background: #fafafa;
 	-webkit-transition:all 0.3s ease-in-out;
 	-moz-transition:all 0.3s ease-in-out;
@@ -1651,6 +1651,11 @@ a.read-more:hover {
 }
 .margin-top-50 {
 	margin-top: 50px;
+}
+
+.margin-20
+{
+	margin: 20px;
 }
 
 .top-2 {
