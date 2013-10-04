@@ -20,6 +20,7 @@ class PrepApplicationsController < ApplicationController
 	
 	def index
 		@prep = Prep.find_by_id(params[:prep_id])
+		scheduled_contracts
 		if @prep.prep_applications.empty?
 			flash[:alert] = "There is no applicants for this prep"
 		else
@@ -86,6 +87,12 @@ class PrepApplicationsController < ApplicationController
 		if current_user.roles.first.name != "preppee"
 			redirect_to "/422.html"
 		end
+	end
+
+	def scheduled_contracts
+		@scheduled_contracts = Contract.where(preppee_id: current_user.id)
+		.group("contracts.due_start_date").count
+
 	end
 
 	def create_interview_session(contract)
